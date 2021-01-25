@@ -9,3 +9,5 @@
 
  Hace mucho que mi vida no da un giro de aprendizaje. Quizas lo último que he aprendido ha sido a trabajar con
  React - Redux
+
+ Y no mucho mas....
