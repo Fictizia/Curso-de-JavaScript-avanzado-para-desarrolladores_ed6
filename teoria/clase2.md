@@ -572,7 +572,7 @@ for (const valor of iterable){
 }
 ```
 
-###Enlaces de interés
+### Enlaces de interés
 
 - [Lenguajes dinámicos y lenguajes estáticos](https://charlascylon.com/2017-05-10-dynamic-vs-static)
 - [wtfjs](https://github.com/denysdovhan/wtfjs)
@@ -586,6 +586,8 @@ for (const valor of iterable){
 // Lo que nos gustaría
 function ordenar(arr) {
 }
+
+// Aquí hay diferentes formas de resolver este problema: https://medium.com/@rajat_m/implement-5-sorting-algorithms-using-javascript-63c5a917e811
 ```
 
 2. Crear una función que reciba un número entero positivo y devuelva true si dicho número es par o false en caso contrario.
