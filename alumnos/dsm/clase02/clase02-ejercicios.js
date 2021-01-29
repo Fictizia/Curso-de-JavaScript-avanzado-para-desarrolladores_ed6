@@ -94,7 +94,6 @@ depende del día de la semana mi trauma cambia:
 Escribir una función que reciba el día de la semana como cadena de texto y un número y me recuerde si hoy odio ese número o no*/
 
 function aquiHayOdio(dia, numero) {
-  const response = 'ODIO ESE NÚMERO';
   switch (dia) {
     case 'lunes':
       return (numero === 12)
