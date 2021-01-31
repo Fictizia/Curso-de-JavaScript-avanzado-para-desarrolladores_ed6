@@ -41,7 +41,6 @@ function azarMoneda() {
 
 azarMoneda();
 
-
 //5 - Escribe una función que simule cien tiradas de dos dados y devuelva las veces que entre los dos suman 10.
 
 function azarDados() {
@@ -73,8 +72,6 @@ console.assert(repite('Batman ', 3) === 'Batman Batman Batman ')
 //7 Crea una función que reciba una frase como string y devuelva la palabra más larga:
 
 /* function palabraMasLarga(str) {
-
-
     const palabrasComoStrings = str.trim().split(' ');
     let resultado = palabrasComoStrings[0]
     for(let i = 1; i < palabrasComoStrings.length; i += 1) {
@@ -85,6 +82,7 @@ console.assert(repite('Batman ', 3) === 'Batman Batman Batman ')
     }
     return resultado;
 } */
+
 function palabraMasLarga(str) {
   let pos = 0;
   let arr = str.split(' ');
@@ -111,7 +109,7 @@ function ponPrimeraMayuscula(str) {
   }
   return nuevoStr.trimEnd();
 }​
-console.assert(ponPrimeraMayuscula("En un lugar de la Mancha de cuyo nombre no quiero acordarme") === "En Un Lugar De La Mancha De Cuyo Nombre No Quiero Acordarme")
+console.assert(ponPrimeraMayuscula("En un lugar de la Mancha") === "En Un Lugar De La Mancha")
 
 
 
@@ -137,17 +135,11 @@ console.assert(camelize("Hola a todos que tal") === "holaATodosQueTal");
 
 
 function formatoIngles(num) {
-    
-  switch (num) {
-    case 11:
-      return `eleven`
-    case 12:
-      return 'twelve'
-    case 13:
-      return `thirteen`
-  }
-
   let lastNum = num.toString().slice(-1);
+
+  if (num >= 11 && num <= 13) {
+    return `${num}th`
+  }
 
   switch (lastNum) {
     case "1":
@@ -164,7 +156,7 @@ function formatoIngles(num) {
 console.assert(formatoIngles(301) === "301st")
 console.assert(formatoIngles(302) === "302nd")
 console.assert(formatoIngles(303) === "302rd")
-console.assert(formatoIngles(12) === "twelve")
+console.assert(formatoIngles(12) === "12th")
 console.assert(formatoIngles(300) === "300th")
 
 
@@ -190,7 +182,13 @@ Input: '0000000010' Output: 100
 Input: porcentajeInfectados('X00X000000X10X0100') Output: ~42.857142857142854 */
 
 function porcentajeInfectados(s) {
-    
+
+  const onlyOcean = new Set(s.split(''))
+
+  if (onlyOcean.size === 1) {
+    return 0;
+  }
+
   let continentes = s.split('X');
   let poblacion = 0;
   let contagiados = 0;
@@ -201,5 +199,6 @@ function porcentajeInfectados(s) {
     }
     poblacion += continente.length;
   };
+
   return 100 / poblacion * contagiados;
 };
