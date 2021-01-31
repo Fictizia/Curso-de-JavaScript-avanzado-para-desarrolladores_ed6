@@ -183,9 +183,9 @@ Input: porcentajeInfectados('X00X000000X10X0100') Output: ~42.857142857142854 */
 
 function porcentajeInfectados(s) {
 
-  const onlyOcean = new Set(s.split(''))
+  const todoOceano = new Set(s.split(''))
 
-  if (onlyOcean.size === 1) {
+  if (todoOceano.has('X') && todoOceano.size === 1) {
     return 0;
   }
 
