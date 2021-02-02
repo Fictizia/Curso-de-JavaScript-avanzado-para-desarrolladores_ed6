@@ -16,19 +16,19 @@ function calculadora(num1, num2, operador) {
 
     switch(num1, num2, operador) {        
         case 'sumar':            
-            console.log(num1 + num2);
-            break;
+            return num1 + num2;
+
         case 'restar':
-            console.log(num1 - num2);
-            break;
+            return num1 - num2;
+
         case 'multiplicar':
-            console.log(num1 * num2);
-            break;
+            return num1 * num2;
+
         case 'dividir':
-            console.log(num1 / num2);
-            break;
+            return num1 / num2;
+
         default:
-            console.log('Prueba sumar, restar, multiplicar o dividir');
+            return 'Prueba sumar, restar, multiplicar o dividir';
 
     }   
 }
