@@ -27,4 +27,5 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 1 | [Clase 1](teoria/clase1.md) | Presentación, historia y control de versiones |
 | Clase 2 | [Clase 2](teoria/clase2.md) | Sintaxis de JS |
 | Clase 3 | [Clase 3](teoria/clase3.md) | Números, Strings y Objetos |
+| Clase 4 | [Clase 4](teoria/clase4.md) | Objetos y funciones |
 
