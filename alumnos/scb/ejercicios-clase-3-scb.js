@@ -113,9 +113,40 @@ console.log(ponPrimeraMayuscula("Erase una vez que se era"));
 // 4. Crea una función que reciba un string y lo devuelva en camelCase.
 
 function camelize(str) {
-  return str.replace(/\W+(.)/g, function(match, index)
-       {
-            return index.toUpperCase();
-        });
+  const palabrasComoStrings = str.trim().split(' ');
+  let resultado = palabrasComoStrings[0].toLowerCase()
+  for(let i = 1; i < palabrasComoStrings.length; i += 1) {
+      const palabra = palabrasComoStrings[i]
+      resultado += palabra[0].toUpperCase() + palabra.slice(1);
+  }
+  return resultado;
 }
-console.log(camelize("Erase una vez que se era"))
+console.assert(camelize("Hola a todos que tal") === "holaATodosQueTal");
+
+
+// 5. Crea una función que reciba un número y devuelva un string con formato ordinal inglés. Esto es:
+// - acaba en 1 --> 301st
+// - acaba en 2 --> 302nd
+// -  acaba en 3 --> 303rd
+// - cualquier otra cosa --> 300th
+
+
+function formatoIngles(num) {
+  const string = num.toString();
+  
+  if( string.slice(-1) === '1' ) {
+    return `${num}st`;
+  
+  } else if( string.slice(-1) === '2' ) {
+    return `${num}nd`;;
+  
+  } else if ( string.slice(-1) === '3' ){
+    return `${num}rd`;
+  
+  } else {
+    return `${num}th`
+  }
+}
+formatoIngles(36)
+
+
