@@ -502,15 +502,33 @@ console.log('      Yo soy Batman     '.trimStart()) // Yo soy Batman
 
 ```javascript
 function repite(str, n) {
+  let resultado  = '';
+  for(let i = 0; i < n; i += 1) {
+    resultado += str;
+  }
+  return resultado
 }
 
-console.assert(repeat('Batman ', 3) === 'Batman Batman Batman ')
+function repite(str, n) {
+  return str.repeat(n)
+}
+
+console.assert(repite('Batman ', 3) === 'Batman Batman Batman ')
 ```
 
 5. Crea una función que reciba una frase como string y devuelva la palabra más larga:
 
 ```javascript
 function palabraMasLarga(str) {
+    const palabrasComoStrings = str.trim().split(' ');
+    let resultado = palabrasComoStrings[0]
+    for(let i = 1; i < palabrasComoStrings.length; i += 1) {
+        const palabra = palabrasComoStrings[i]
+      if (palabra.length > resultado.length) {
+          resultado = palabra;
+      }
+    }
+    return resultado;
 }
 
 console.assert(palabraMasLarga("Erase una vez que se era") === "Erase")
@@ -529,8 +547,14 @@ console.assert(ponPrimeraMayuscula("En un lugar de la Mancha de cuyo nombre no q
 
 ```javascript
 function camelize(str) {
+  const palabrasComoStrings = str.trim().split(' ');
+  let resultado = palabrasComoStrings[0].toLowerCase()
+  for(let i = 1; i < palabrasComoStrings.length; i += 1) {
+    const palabra = palabrasComoStrings[i]
+    resultado += palabra[0].toUpperCase() + palabra.slice(1);
+  }
+  return resultado;
 }
-
 console.assert(camelize("Hola a todos que tal") === "holaATodosQueTal");
 ```
 
@@ -580,334 +604,4 @@ Casos de prueba:
 function porcentajeInfectados(s) {
 
 }
-```
-
-### Object
-
-A diferencia del resto de tipos, los objetos pueden contener más de un valor de cualquiera del resto de tipos. Casi todo en JS es un Object. Los objetos funcionan por referencia en JS, es decir, las variables guardan una referencia al lugar en memoria donde está guardado el objeto. Una definición muy acertada sería: "son cosas que tienen propiedades a las que se accede por una clave única".
-
-#### Declaración
-
-```javascript
-const nuestroPrimeritoObjeto = {
-  claveComoString: 'valor',
-  aquiHayUnNumero: 3000,
-  esUnBooleano: true,
-  unObjetoAnidado: { }
-}
-
-```
-
-Las claves no siguen las mismas normas que las variables, pueden empezar (o ser) números y pueden contener caracteres especiales y/o espacios si van entrecomilladas:
-
-```javascript
-const anarquia = {
-  'a mi me gustan los espacios': 'pues toma espacios',
-  4: 'esta clave es un número'
-}
-```
-
-También podéis definir claves en dinámicas en función de otras variables (claves computadas)
-
-```javascript
-
-const miClave = Math.random();
-
-const miObjeto = {
-  [miClave]: 'esta clave hace lo que quiere'
-};
-```
-
-Desde ES6 podemos acortar la declaración de claves en objetos:
-
-```javascript
-
-const nombre = 'Fran Quesada';
-const escuela = 'Fictizia';
-
-const profesor = { nombre, escuela }
-```
-
-#### Jugando con objetos
-
-Hay que tener en cuenta que los objetos mutan en Javascript. Al guardarse por referencia, su contenido puede variar sin modificar dicha referencia.
-
-
-```javascript
-
-const string = 'mi string'
-// Como ya vimos esto no lo puedo hacer
-string = 'otra cosa diferente'
-
-// Los objetos mutan, así que puedo modificar su contenido libremente
-const objeto = {
-  propiedad1: 'Esta es mi propiedad original'
-}
-
-objeto.propiedad2 = 'Esta es una propiedad nueva'
-objeto.propiedad1 = 'Esta propiedad la modifico'
-
-// Lo que no puedo hacer es lo siguiente:
-const peligro = {
-  propiedad1: 'Esta es mi propiedad original'
-}
-
-peligro = {
-    prohibido: 'Esto no lo puedo hacer'
-}
-
-```
-
-Podemos usar el [rest operator](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Funciones/parametros_rest) para componer objetos:
-
-```javascript
-const personaConNombre = {
-  nombre: 'Juan',
-}
-
-const personaConApellidos = {
-  apellidos: 'de las Nieves'
-}
-
-const personaConNombreYApellidos = {
-  ...personaConNombre,
-  ...personaConApellidos
-}
-```
-
-#### Acceso
-
-Para acceder a una propiedad de un objeto podemos usar:
-
-- El operador `.`
-
-```javascript
-const heroes = {
-  dc: ['batman', 'superman'],
-  marvel: ['spiderman', 'iron man']
-}
-
-const heroesDc = heroes.dc
-```
-
-- El operador `[]`
-
-```javascript
-const heroes = {
-  dc: ['batman', 'superman'],
-  marvel: ['spiderman', 'iron man']
-}
-
-const heroesDc = heroes['dc']
-```
-
-- Una de las cosas que añadieron en ES6 fue el llamado `destructuring`:
-
-```javascript
-const heroes = {
-  dc: ['batman', 'superman'],
-  marvel: ['spiderman', 'iron man']
-}
-
-const { dc: heroesDc } = heroes
-```
-
-Si queremos prevenir errores, podemos usar valores por defecto.
-
-```javascript
-const heroes = {
-  marvel: ['spiderman', 'iron man']
-}
-
-const { dc: heroesDc = [] } = heroes
-```
-
-Combinándolo con las claves computadas:
-
-```javascript
-const DC = 'dc'
-const heroes = {
-  dc: ['batman', 'superman'],
-  marvel: ['spiderman', 'iron man']
-}
-
-const { [DC]: heroesDc } = heroes
-```
-
-Además, podemos usarlo para acceder a objetos anidados:
-
-```javascript
-const dc = {
-  heroes: {
-    batman: {
-      nombre: 'Bruce Wayne'
-    },
-    superman: {
-      nombre: 'Clark Kent'
-    }
-  }
-}
-
-const { heroes: { batman } } = dc
-```
-
-#### getters y setters
-
-Desde ES6 podemos definir getters y setters en los objetos. Los getters son propiedades que se calculan en base a otras. Los setters se usan para modificar propiedades que componen el getter:
-
-```javascript
-const espia  = {
-  nombre: 'James',
-  apellido: 'Bond',
-  get nombreCompleto() {
-    return `${this.nombre} ${this.apellido}`
-  },
-  set nombreCompleto(valor) {
-    const palabras = valor.split(' ')
-    this.nombre = palabras[0] || ''
-    this.apellido = palabras[1] || ''
-  },
-  get nombreEspia() {
-    return `${this.apellido}, ${this.nombre} ${this.apellido}`
-  }
-}
-
-console.log(espia.nombreEspia)
-espia.nombreCompleto = 'Austin Powers'
-console.log(espia.nombreEspia)
-```
-
-#### Métodos
-
-* `.assign(destino, obj1, obj2, ...objn)`: Copia los valores de los n objetos pasados en el objeto destino. Útil para clonado de objetos (a primer nivel).
-
-```javascript
-const personaConNombre = {
-  nombre: 'Juan',
-}
-
-const personaConApellidos = {
-  apellidos: 'de las Nieves'
-}
-
-const personaConNombreYApellidos = Object.assign({}, personaConNombre, personaConApellidos)
-```
-
-* `.defineProperties(objeto, propiedades)`: Define nuevas o modifica propiedades existentes en un objeto y lo devuelve
-
-```javascript
-const miObjeto = { propiedad: "Propiedad original..." }
-Object.defineProperties(miObjeto, {
-  propiedad1: {
-    value: true,
-    writable: true
-  },
-  propiedad2: {
-    value: "Cadena de texto",
-    writable: false
-  }
-});
-console.log(miObjeto);
-miObjeto.propiedad = "Propiedad original Modificada";
-console.log(miObjeto.propiedad);
-miObjeto.propiedad2 = "Cadena de texto... ¿modificada?";
-console.log(miObjeto.propiedad2);
-```
-
-* `.getOwnPropertyDescriptor(objeto, propiedad)`: Devuelve los detalles de una propiedad de un objeto.
-
-```javascript
-const miObjeto = { propiedad: "Propiedad original..." }
-Object.defineProperties(miObjeto, {
-  propiedad1: {
-    value: true,
-    // Esta configuración es la misma que al declarar un objeto
-    // Por defecto es false
-    writable: true,
-    // Esto permite que podamos iterar sobre esta propiedad con for...in, Object.keys, etc
-    enumerable: true
-  },
-  propiedad2: {
-    value: "Cadena de texto",
-    enumerable: false
-  }
-});
-console.log(Object.getOwnPropertyDescriptor(miObjeto, 'propiedad2'))
-```
-
-* `.entries(objeto)`: Devuelve los pares clave-valor del objeto como una lista de arrays.
-
-```javascript
-const objeto = {
-  nombre: 'Ash',
-  apellidos: 'Ketchum',
-  localidad: 'Pueblo Paleta'
-}
-
-const entradas = Object.entries(objeto)
-// [['nombre', 'Ash'], ['appelidos', 'Ketchum'], ['localidad', 'Pueblo Paleta']]
-```
-
-* `.fromEntries(objeto)`: Devuelve un objeto nuevo a partir de un array de entries con el mismo formato que el generado por `Object.entries`
-
-```javascript
-const entradas = [['nombre', 'Ash'], ['appelidos', 'Ketchum'], ['localidad', 'Pueblo Paleta']]
-
-const objeto = Object.fromEntries(entradas)
-// { nombre: 'Ash', apellidos: 'Ketchum', localidad: 'Pueblo Paleta' }
-```
-
-* `.keys(objeto)`: Devuelve un array con las claves del objeto.
-
-```javascript
-const objeto = {
-  nombre: 'Fran Quesada',
-  edad: 26,
-}
-
-const keys = Object.keys(objeto) // ['nombre', 'edad']
-```
-
-* `.values(objeto)`: Devuelve un array con los valores de las propiedades del objeto.
-
-```javascript
-const objeto = {
-  nombre: 'Fran Quesada',
-  edad: 26,
-}
-
-const keys = Object.values(objeto) // ['Fran Quesada', 26]
-```
-
-* `.freeze(objeto)`: Congela el objeto proporcionado para que no se le puedan añadir ni modificar propiedades. ¡Importante!: No se puede descongelar
-
-```javascript
-const objeto = {
-  nombre: 'Fran Quesada',
-  edad: 26,
-}
-
-// Devuelve el mismo objeto
-const objetoCongelado = Object.freeze(objeto)
-objetoCongelado.localidad = 'Madrid'
-
-// Pero si podemos crear nuevas copias a partir del objeto congelado
-const nuevoObjeto = {
-   ...objetoCongelado,
-    localidad: 'Madrid'
-}
-```
-
-* `.seal(objeto)`: Sella las propiedades de un objeto para que no se puedan añadir nuevas ni cambiar la configuración de las existentes.
-
-```javascript
-const objeto = {
-  nombre: 'Fran Quesada',
-  edad: 26,
-}
-
-// Devuelve el mismo objeto
-const objetoCongelado = Object.seal(objeto)
-objetoCongelado.localidad = 'Madrid'
-objetoCongelado.edad = 27
 ```

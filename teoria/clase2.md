@@ -585,6 +585,22 @@ for (const valor of iterable){
 ```javascript
 // Lo que nos gustaría
 function ordenar(arr) {
+    return arr.sort()
+}
+
+// Aplicando el algoritmo de la burbuja
+function ordenar(arr) {
+  const nuevoArray = [...arr]
+  for (let i = 0; i < nuevoArray.length ; i++) {
+    for(let j = 0 ; j < nuevoArray.length - i - 1; j++){
+      if (nuevoArray[j] > nuevoArray[j + 1]) {
+        let temporal = nuevoArray[j];
+        nuevoArray[j] = nuevoArray[j+1];
+        nuevoArray[j + 1] = temporal;
+      }
+    }
+  }
+  return nuevoArray;
 }
 
 // Aquí hay diferentes formas de resolver este problema: https://medium.com/@rajat_m/implement-5-sorting-algorithms-using-javascript-63c5a917e811
