@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //EJERCICIO2 Crear una función que reciba un número entero positivo y devuelva true si dicho número es par o false en caso contrario.
+      // let numero = prompt("Pon un numero");
+
+      // let resultado =  esPar(numero);
+
+      // function esPar(numero){
+
+      //     if(numero % 2 === 0){
+      //         return "true";
+      //     } else {
+      //         return "false"
+
+      //     }
+      // }
+      // console.log("el resultado" + resultado);
+
+      //EJERCICIO3 Crear una función que recibe dos números y un operador (su nombre como string)
+      //y que devuelve el resultado de aplicar dicha operación a los dos números proporcionados.
+
+      // function calculadora(num1, num2, operador) {
+
+      //     switch(operador){
+      //         case 'suma':
+      //             return num1+num2;
+      //         case 'resta':
+      //             return num1-num2;
+      //         case 'multiplicacion':
+      //             return num1*num2;
+      //         case 'division':
+      //             return num1/num2;
+      //         default:
+      //             alert('no valido')
+
+      //     }
+
+      // }
+
+      //EJERCICIO 4 Crear una función que reciba un divisor y un limite
+      // y devuelva el mayor número divisible por divisor menor que limite. Ambos valores serán siempre enteros positivos.
+
+      // function maximoDivisble (divisor,limite){
+
+      //     let max
+      //     for (let i= 1; i<limite; i++){
+      //         if (i % divisor === 0){
+      //             max=i;
+      //         }
+      //     }
+      //     return max;
+      // }
+      // maximoDivisble(8,16);
+
+      //EJERCICIO 5 Cada día una planta crece en metros según su velocidadCrecimiento. Cada noche, dicha planta decrece en metros en base a su
+      //velocidadDecrecimiento debido a la falta de sol. Cuando nace, mide exactamente 0 metros.
+      //Queremos saber los días que tardará una planta en alcanzar cierta alturaDeseada. Crear una función que reciba velocidadCrecimiento,
+      //velocidadDecrecimiento y alturaDeseada como números enteros positivos y devuelva el número de días que tardará la planta en medir la alturaDeseada.
+
+      // function calcularDiasCrecimiento(velocidadCrecimiento, velocidadDecrecimiento, alturaDeseada) {
+
+      //     let dias = 0;
+      //     let noches = 0;
+      //     let nace = 0;
+      //     let diaOnoche = true;
+
+      //     do{
+      //         if(diaOnoche){
+      //             dias++;
+      //             nace += velocidadCrecimiento;
+      //         }else{
+      //             noches++;
+      //             nace -= velocidadDecrecimiento;
+      //         }
+      //         diaOnoche = !diaOnoche;
+
+      //     }while (nace >= alturaDeseada);
+
+      // return dias;
+
+      // }
+
+      //EJERCICIO 6 Tengo algunos traumitas con los números. No muchos, pero los tengo. Pero no acaba ahí, depende del día de la semana mi trauma cambia:
+
+      function aquiHayOdio(dia, numero) {
+        switch (dia) {
+          case "lunes":
+            if (numero === 12) return true;
+            break;
+          case "martes":
+            if (numero > 95) return true;
+            break;
+          case "miercoles":
+            if (numero === 34) return true;
+            break;
+          case "jueves":
+            if (numero === 0) return true;
+            break;
+          case "viernes":
+            if (numero % 2 === 0) return true;
+            break;
+          case "sabado":
+            if (numero === 56) return true;
+            break;
+          case "domingo":
+            if (numero === 666 || -666) return true;
+            break;
+        }
+
+        return false;
+      }
+    </script>
+  </body>
+</html>

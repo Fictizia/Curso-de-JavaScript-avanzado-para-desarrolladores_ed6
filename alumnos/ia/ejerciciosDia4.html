@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Vamos a calcular el precio del carrito de la compra. Un carrito de la compra tiene una propiedad productos que es una lista de los productos.
+      // const carrito = {
+      //   productos: [
+      //     {
+      //       nombre: "papel higienico",
+      //       unidades: 4,
+      //       precio: 5,
+      //     },
+      //     {
+      //       nombre: "chocolate",
+      //       unidades: 2,
+      //       precio: 1.5,
+      //     },
+      //   ],
+      //   get precioTotal() {
+      //     const productos = this.productos;
+      //     let precioTotal = 0;
+      //     for (const producto of productos) {
+      //       precioTotal += precio.unidades * producto.precio;
+      //     }
+      //     return precioTotal;
+      //   },
+      // };
+
+      // En casa tenemos una estantería muy interesante de libros. Cada libro se compone de las siguientes propiedades:
+
+      const estanteria = {
+        libros: [
+          {
+            nombre: "El caballero oscuro",
+            autor: "Frank Miller",
+            leido: false,
+          },
+          {
+            nombre: "El mundo amarillo",
+            autor: "Albert Espinosa",
+            leido: false,
+          },
+          {
+            nombre: "Harry Potter y el caliz de fuego",
+            autor: "J.K. Rowling",
+            leido: true,
+          },
+          {
+            nombre: "El ingenioso hidalgo Don Quijote de la Mancha",
+            autor: "Miguel de Cervantes",
+            leido: false,
+          },
+          {
+            nombre: "Berserk",
+            autor: "Kentaro Miura",
+            leido: true,
+          },
+          {
+            nombre: "Iliada",
+            autor: "Homero",
+            leido: false,
+          },
+        ],
+        get log() {
+          let libroLeido = "";
+          this.libros.forEach((libro) => {
+            if (libro.leido) {
+              libroLeido += `Ya has leído ${libro.nombre} de ${libro.autor}`;
+            } else {
+              libroLeido += `Aun no has leído ${libro.nombre} de ${libro.autor}`;
+            }
+          });
+          return libroLeido;
+        },
+        get sugerencia() {
+          let libroRamdon =
+            Math.floor(Math.random() * (this.libros.length - 1)) + 1;
+          while (this.libros[libroRamdon].leido) {
+            libroRamdon =
+              Math.floor(Math.random() * (this.libros.length - 1)) + 1;
+          }
+          return this.libros[libroRamdon];
+        },
+      };
+    </script>
+  </body>
+</html>
