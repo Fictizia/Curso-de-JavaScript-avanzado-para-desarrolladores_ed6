@@ -94,7 +94,7 @@ repite('Batman ', 3)
 
 function palabraMasLarga(str) {
   let stringSeparated = str.trim().split(' ');
-  let longest = palabrasComoStrings[0];
+  let longest = stringSeparated[0];
 
   for ( i = 0; i < stringSeparated.length; i++) {
 
@@ -165,12 +165,8 @@ function formatoIngles(num) {
   let last2nums = string.slice(-2)
 
 
-  if( last2nums == "12"){
-    lastNum = "12";
-  }
-
-  if( last2nums == "13"){
-    lastNum = "13";
+  if( last2nums >= "12" && last2nums <= "13" ){
+    return last2nums + "th";
   }
 
     switch(lastNum) {
