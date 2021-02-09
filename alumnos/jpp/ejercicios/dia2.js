@@ -1,31 +1,31 @@
 // --- Crear una función que reciba un array de números enteros positivos desordenados y devuelva otro array con los números ordenados.
 
 
-// *** WIP *****
 const numbers = [3,1,5,7,4];
 
-function ordenar(arr) {
 
+function ordenar(array) {
+
+  let arr = [...array];
   let newArray = [];
+  let higherNum = 0;
 
-  while ( newArray.length < arr.length ) {
-      for (let i =  arr.length - 1, j = 0; i > j; i -= 1){
+  for (let i = arr.length - 1; i >= 0; i--) {
+    for (j=0;j< arr.length;j++) {
 
-        let temporal = 0
-
-        if(arr[i] > temporal) {
-          temporal = arr[i]
-          console.log("temporal",temporal)
-        }
-        console.log('1',i, j) // 4 0
-        console.log('2',arr[i]) // 4
-        console.log('3',arr[j]) // 3
+      if (arr[j] > higherNum) {
+        higherNum = arr[j];
       }
+    }
+    newArray[i] = higherNum
+
+    // *** WIP: Delete higherNum ***
   }
   return newArray
+  console.info("newArray", newArray)
 }
-
 ordenar(numbers)
+
 
 
 // --- Crear una función que reciba un número entero positivo y devuelva true si dicho número es par o false en caso contrario.
