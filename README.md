@@ -28,4 +28,6 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 2 | [Clase 2](teoria/clase2.md) | Sintaxis de JS |
 | Clase 3 | [Clase 3](teoria/clase3.md) | Números, Strings y Objetos |
 | Clase 4 | [Clase 4](teoria/clase4.md) | Objetos y funciones |
+| Clase 5 | [Clase 5](teoria/clase5.md) | Array y Proxy |
+| Clase 6 | [Clase 6](teoria/clase6.md) | Set y Map, Date, Error y Módulos |
 
