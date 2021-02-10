@@ -213,7 +213,7 @@ heroes.forEach((heroe, clave) => console.log(clave, heroe))
 const array1 = [1,2,3,4,5]
 const array2 = [1,3,5,9,10]
 const array3 = [4,5,6,7,9]
-const array3 = [8,10]
+const array4 = [8,10]
 
 // Salida
 [1,2,3,4,5,6,7,8,9,10]
