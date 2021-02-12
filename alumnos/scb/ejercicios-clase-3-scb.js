@@ -68,8 +68,8 @@ azarDados();
 // 1. Crea una función que reciba un string y un número n y devuelva el string repetido n veces:
 
 function repite(str, n) {
-  const result = 'Batman '
-  return result.repeat(n)
+  const str = 'Batman '
+  return str.repeat(n)
 };
 
 repite('Batman', 3)
@@ -132,21 +132,21 @@ console.assert(camelize("Hola a todos que tal") === "holaATodosQueTal");
 
 
 function formatoIngles(num) {
-  const string = num.toString();
-  
-  if( string.slice(-1) === '1' ) {
-    return `${num}st`;
-  
-  } else if( string.slice(-1) === '2' ) {
-    return `${num}nd`;;
-  
-  } else if ( string.slice(-1) === '3' ){
-    return `${num}rd`;
-  
-  } else {
-    return `${num}th`
+  let string = num.toString(10);
+  if (num === 11 || num === 12 || num === 13) {
+      return string + 'th';
+  }
+  switch (string.slice(-1)) {
+      case '1':
+          return string + 'st';
+      case '2':
+          return string + 'nd';
+      case '3':
+          return string + 'rd';
+      default:
+          return string + 'th';
   }
 }
-formatoIngles(36)
+formatoIngles(11)
 
 
