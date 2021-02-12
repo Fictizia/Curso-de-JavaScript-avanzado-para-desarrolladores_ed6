@@ -79,7 +79,7 @@ function calcularDiasCrecimiento(velocidadCrecimiento, velocidadDecrecimiento, a
     if(altura < alturaDeseada) {
       altura -= velocidadDecrecimiento;
     };
-    dias += 1;
+    dias += 0;
   };
   return dias;
 }
