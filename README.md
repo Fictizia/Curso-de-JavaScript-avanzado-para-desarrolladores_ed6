@@ -32,4 +32,5 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 6 | [Clase 6](teoria/clase6.md) | Set y Map, Date, Error y Módulos |
 | Clase 7 | [Clase 7](teoria/clase7.md) | Asincronía, eventos y callbacks |
 | Clase 8 | [Clase 8](teoria/clase8.md) | Asincronía, callbacks y promesas |
+| Clase 9 | [Clase 9](teoria/clase9.md) | HTTP, Ajax y Fetch |
 
