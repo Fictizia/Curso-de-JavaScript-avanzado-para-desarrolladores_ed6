@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>Ejemplo eventos</title>
+  <meta charset="UTF-8" />
+  <style rel="stylesheet">
+
+  </style>
+</head>
+
+<body>
+    <div id="papa">
+        <div id="hijo">
+            Pulsa aquí
+        </div>
+    </div>
+
+    <ul id="listado">
+
+    </ul>
+
+
+    <script>
+        const padre = document.getElementById('papa');
+        const hijo = document.getElementById('hijo');
+        const listado = document.getElementById('listado')
+
+        const creaElementoLista = (nombre, fase) => `
+            <li><span class="element_name">${nombre}</span>: <span class="element_phase">${fase}</span></li>
+        `
+
+        hijo.addEventListener('click', function(event) {
+            listado.innerHTML += creaElementoLista('hijo', event.eventPhase)
+        });
+
+        hijo.addEventListener('click', function(event) {
+          listado.innerHTML += creaElementoLista('hijo', event.eventPhase)
+        }, true);
+
+
+        padre.addEventListener('click', function(event) {
+          listado.innerHTML += creaElementoLista('padre', event.eventPhase)
+        });
+
+        padre.addEventListener('click', function(event) {
+          listado.innerHTML += creaElementoLista('padre', event.eventPhase)
+        }, true);
+    </script>
+
+</body>
+
+</html>
