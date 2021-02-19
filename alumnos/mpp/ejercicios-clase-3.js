@@ -103,3 +103,28 @@ function formatoIngles(num) {
             return numStr + 'th';
     }
 }
+
+function porcentajeInfectados(s) {
+    while (s.length > 0 && s[0] === 'X') {
+        s = s.slice(1);
+    }
+    while (s.length > 0 && s[s.length - 1] === 'X') {
+        s = s.slice(0, -1);
+    }
+    let porContinentes = s.split(/X+/);
+    let infectados = 0;
+    let total = 0;
+    for (let continente of porContinentes) {
+        total += continente.length;
+        if (continente.includes('1')) {
+            infectados += continente.length;
+        }
+    }
+    return total ? 100*infectados/total : 0;
+}
+
+console.log(porcentajeInfectados('01000000X000X011X0X'));
+console.log(porcentajeInfectados('01X000X010X011XX'));
+console.log(porcentajeInfectados('XXXXX'));
+console.log(porcentajeInfectados('0000000010'));
+console.log(porcentajeInfectados('X00X000000X10X0100'));
