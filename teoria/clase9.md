@@ -204,6 +204,48 @@ req.addEventListener('loadend', (event) => {
 req.send(null)
 ```
 
+** Ejemplo haciendo un wrapper basado en callbacks sobre XMLHttpRequest **
+
+```javascript
+
+const request = ({ method = 'GET', url, contentType = 'json', timeout = null, body = null, onProgress, onResponse, onError, onComplete }) => {
+  const req = new XMLHttpRequest();
+  req.open(method, url, true);
+  req.timeout = timeout
+  req.responseType = contentType;
+
+  req.onreadystatechange = (event) => {
+      if (req.readyState === 4) {
+          onResponse({ response: req.response, status: req.status })
+      }
+  }
+  req.onprogress = onProgress
+  req.onError = onError
+  req.onload = onComplete
+
+  req.send(body)
+}
+```
+
+** Ejemplo usando promesas sobre XMLHttpRequest **
+
+```javascript
+const request = ({ method = 'GET', url, contentType = 'json', timeout = null, body = null, }) => new Promise((resolve, reject) => {
+  const req = new XMLHttpRequest();
+  req.open(method, url, true);
+  req.responseType = contentType;
+  req.timeout = timeout
+  req.onreadystatechange = (event) => {
+      if (req.readyState === 4) {
+          resolve({ response: req.response, status: req.status })
+      }
+  }
+  req.onError = reject
+
+  req.send(body)
+})
+```
+
 **Ejercicio**
 
 **1 -** Sacar en el html el tiempo meteorológico de Madrid, Barcelona y Jaén. Nota: http://openweathermap.org te será de gran ayuda, busca la solución al error 401

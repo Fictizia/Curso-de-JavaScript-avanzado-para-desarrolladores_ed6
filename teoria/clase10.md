@@ -264,7 +264,6 @@ const alias = email.replace(soloNombreRegex, '$1');
 
 Nota: Ejecutar el código en la misma web de Fictizia para evitar errores de CORS.
 
-
 ```javascript
 
 console.log(profes)
