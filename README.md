@@ -34,4 +34,5 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 8 | [Clase 8](teoria/clase8.md) | Asincronía, callbacks y promesas |
 | Clase 9 | [Clase 9](teoria/clase9.md) | HTTP, Ajax y Fetch |
 | Clase 10 | [Clase 10](teoria/clase10.md) | Expresiones regulares |
+| Clase 11 | [Clase 11](teoria/clase11.md) | Paradigmas de programación |
 
