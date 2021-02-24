@@ -35,4 +35,5 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 9 | [Clase 9](teoria/clase9.md) | HTTP, Ajax y Fetch |
 | Clase 10 | [Clase 10](teoria/clase10.md) | Expresiones regulares |
 | Clase 11 | [Clase 11](teoria/clase11.md) | Paradigmas de programación |
+| Clase 12 | [Clase 12](teoria/clase12.md) | Patrones de desarrollo |
 
