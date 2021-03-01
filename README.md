@@ -36,4 +36,6 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 10 | [Clase 10](teoria/clase10.md) | Expresiones regulares |
 | Clase 11 | [Clase 11](teoria/clase11.md) | Paradigmas de programación |
 | Clase 12 | [Clase 12](teoria/clase12.md) | Patrones de desarrollo |
+| Clase 13 | Clase 13 | Sesión práctica |
+| Clase 14 | [Clase 14](teoria/clase14.md) | Patrones de diseño |
 
