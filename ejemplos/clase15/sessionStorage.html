@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style rel="stylesheet">
+        h1,
+        p {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .card-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card-item {
+            display: flex;
+            margin: 4px 0;
+            padding: 12px 8px;
+            max-width: 320px;
+            height: 120px;
+            border: 1px solid #cccccc;
+        }
+
+        .card-image {
+            width: 80px;
+            height: 120px;
+            border-radius: 2%;
+        }
+
+        .card-content {
+            margin: 0 16px;
+        }
+
+        .card-title {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .card-item-content {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Baty familia</h1>
+    <ul id="superHeroList" class="card-list ">
+
+    </ul>
+
+    <script>
+        const list = document.getElementById('superHeroList')
+
+        const createHeroCard = ({ nombre, heroe, imagen }) => {
+          const listItem = document.createElement('li')
+          listItem.classList.add('card-item')
+          listItem.innerHTML = `<img class="card-image" src="${imagen}" data-src="${imagen}">
+            <div class="card-content">
+              <p class="card-title">${heroe}</p>
+              <p class="card-text">${nombre}</p>
+            </div>`
+          return listItem
+        }
+
+        const createListElement = ({
+                                     nombre,
+                                     heroe,
+                                     imagen,
+                                   }) => {
+          const listItem = createHeroCard({ nombre, imagen, heroe })
+          list.append(listItem)
+        }
+
+        (async function() {
+            const data = sessionStorage.getItem('bats')
+            let bats
+            if (data) {
+                console.log('Obtenido del storage')
+                bats = JSON.parse(data)
+            } else {
+                console.log('Obtenido de la API Web')
+                const respuesta = await fetch('http://localhost:3000/search/bat');
+                bats = await respuesta.json()
+                sessionStorage.setItem('bats', JSON.stringify(bats))
+            }
+            bats.results.forEach(el => {
+                createListElement({
+                    heroe: el.name,
+                    nombre: el.biography['full-name'],
+                    imagen: el.image.url,
+                })
+            })
+        })()
+    </script>
+</body>
+
+</html>

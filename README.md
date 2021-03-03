@@ -16,7 +16,7 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 # Sobre el curso
 
 * Horario: Lunes, Miércoles y viernes de 19:00 a 22:00
-* Fechas: 25/01/2021 a 12/03/2021
+* Fechas: 25/01/2021 a 15/03/2021
 * Festivos:
   * 01/02/2021: El profe no puede
 
@@ -38,4 +38,5 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 12 | [Clase 12](teoria/clase12.md) | Patrones de desarrollo |
 | Clase 13 | Clase 13 | Sesión práctica |
 | Clase 14 | [Clase 14](teoria/clase14.md) | Patrones de diseño |
+| Clase 15 | [Clase 15](teoria/clase15.md) | APIS de Navegador: BOM & DOM, Drag&Drop, Intersection Observer y Persistencia  |
 

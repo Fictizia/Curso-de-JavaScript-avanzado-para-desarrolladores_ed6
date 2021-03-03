@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intersection observer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style rel="stylesheet">
+    h1,
+    p {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .is-center {
+      text-align: center;
+    }
+
+    .card-list-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .card-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card-item {
+      display: flex;
+      margin: 4px 0;
+      padding: 12px 8px;
+      max-width: 320px;
+      height: 120px;
+      border: 1px solid #cccccc;
+    }
+
+    .card-image {
+      width: 80px;
+      height: 120px;
+      border-radius: 2%;
+    }
+
+    .card-content {
+      margin: 0 16px;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .card-item-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 75px;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .search-container {
+      width: 80%;
+      display: flex;
+      margin: 0 auto;
+    }
+
+    input.search-bar {
+      margin: 0 auto;
+      width: 100%;
+      height: 45px;
+      padding: 0 20px;
+      font-size: 1rem;
+      border: 1px solid #D0CFCE;
+      outline: none;
+    }
+
+    input.search-bar:focus {
+      border: 1px solid #008ABF;
+      transition: 0.35s ease;
+      color: #008ABF;
+    }
+
+    input.search-bar:focus::-webkit-input-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+
+    input.search-bar:focus::-moz-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+
+    input.search-bar:focus:-ms-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+
+    .search-icon {
+      height: 45px;
+    }
+  </style>
+</head>
+
+<body>
+<h1 class="is-center">Heroes</h1>
+<form class="search-container" id="heroForm">
+  <input type="text" id="heroInput" class="search-bar" placeholder="¿Qué quieres buscar? ">
+  <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+</form>
+
+<div class="card-list-wrapper">
+  <ul id="superHeroList" class="card-list ">
+  </ul>
+</div>
+
+<script>
+  const input = document.getElementById('heroInput')
+  const list = document.getElementById('superHeroList')
+
+  const debouncer = (delay, fn) => {
+    let temporizador;
+    return function (...args) {
+      if (temporizador) {
+        clearTimeout(temporizador);
+      }
+      temporizador = setTimeout(() => {
+        fn(...args);
+        temporizador = null;
+      }, delay);
+    }
+  }
+
+  const callback = (entries, observer) =>
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.src = entry.target.dataset.src;
+        observer.unobserve(entry.target);
+      }
+    });
+
+  const observer = new IntersectionObserver(callback, {
+    rootMargin: "0px 0px 120px 0px"
+  });
+
+  const createHeroCard = ({ nombre, heroe, imagen }) => {
+    const listItem = document.createElement('li')
+    listItem.classList.add('card-item')
+    listItem.innerHTML = `<img class="card-image" data-src="${imagen}" alt="${heroe}">
+            <div class="card-content">
+              <p class="card-title">${heroe}</p>
+              <p class="card-text">${nombre}</p>
+            </div>`
+    return listItem
+  }
+
+  const createListElement = ({
+     nombre,
+     heroe,
+     imagen
+   }) => {
+    const listItem = createHeroCard({ nombre, imagen, heroe })
+    list.append(listItem)
+    const image = listItem.firstElementChild
+    observer.observe(image)
+  }
+
+  const getHero = async (name) => {
+    try {
+      const respuesta = await fetch(`http://localhost:3000/search/${name}`);
+      return respuesta.json()
+    } catch (ex) {
+      alert(ex.message)
+    }
+  }
+
+  const onChange = async event => {
+    list.textContent = ''
+    const text = event.target.value
+    if (text.length < 3) {
+      return;
+    }
+    let bats = await getHero(text)
+
+    bats.results.forEach(el => {
+        createListElement({
+          heroe: el.name,
+          nombre: el.biography['full-name'],
+          imagen: el.image.url,
+        })
+    })
+  }
+  input.addEventListener('submit', e => e.preventDefault());
+
+  input.addEventListener('input',  debouncer(500, onChange));
+</script>
+</body>
+
+</html>
