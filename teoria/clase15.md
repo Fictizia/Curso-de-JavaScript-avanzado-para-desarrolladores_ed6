@@ -26,6 +26,101 @@ Existen dos conceptos muy importantes a la hora de tratar con el navegador, BOM 
 
 BOM (Browser Object Model) representa la ventana del navegador y contiene los componentes que son puramente ligados a esta. Desde JS podemos acceder a él a través de `window`. Estos componentes son: `history`, `location`, `navigator`, `screen` y `document`.
 
+#### History
+
+Representa el historial de navegación de la pestaña actual y nos permite, de forma programática, interactuar con él. Este historial, se comporta como una lista por la que podemos movernos.
+
+```javascript
+// Devuelve el número de entradas en el historial
+console.log(history.length)
+
+// Admite números enteros y nos mueve en el historial tantas posiciones cómo le indiquemos
+history.go()
+
+// Nos lleva atrás en el historial
+history.back() // Equivalente a history.go(-1)
+
+// Nos lleva adelante en el historial
+history.forward() // Equivalente a history.go(1)
+```
+
+Además, podemos manipular el historial de navegación a voluntad. Hay que tener en cuenta que estos cambios han de ser sobre el mismo dominio.
+
+* `.pushState(data, titulo, url)`: Modifica el historial de navegación añadiendo una nueva entrada y modifica el la dirección anterior sin llegar a solicitar ningún recurso. Se combina su uso con el evento `onpopstate` para la gestión del contenido dinámico. En caso de que data contenga información, esta estará disponible en `history.state`.
+
+* `.replaceState(data, titulo, url)`: Similar a `pushState`, sólo que este reemplaza la posición actual del historial.
+
+* Evento `onpopstate`: Este evento pertenece al objeto window. Salta cuando se ejecuta `pushState` o `replaceState` de forma programática y contiene el estado con el que se haya llamado a los métodos.
+
+#### Navigator
+
+Representa el navegador (User-Agent) con el que el usuario está interactuando.Contiene información que podemos consultar y algunas APIs interesantes que podemos usar. Todo lo que tenga que ver con información del dispositivo (geolocalización, bluetoth, usbs,...) se utiliza con `navigator`.
+
+```javascript
+  const informacionSistema = () => {
+    console.log("appCodeName:", window.navigator.appCodeName);
+    console.log("appName:", window.navigator.appName);
+    console.log("appVersion:", window.navigator.appVersion);
+    console.log("platform:", window.navigator.platform);
+    console.log("product:", window.navigator.product);
+    console.log("userAgent:", window.navigator.userAgent);
+    console.log("javaEnabled:", window.navigator.javaEnabled());
+    console.log("language (used):", window.navigator.language);
+    console.log("language (support):", window.navigator.languages);
+    console.log("conectado a internet?", window.navigator.onLine);
+    console.log("mimeTypes:",window.navigator.mimeTypes);
+    console.log("Plugins:", navigator.plugins);
+  }
+```
+
+#### Location
+
+Representa la localización del documento web. Sirve para interactuar con la URL del navegador.
+
+```javascript
+
+const dameInformacionDeLocation = () => {
+  console.log(location.hash)
+  console.log(location.host)
+  console.log(location.hostname)
+  console.log(location.href)
+  console.log(location.origin)
+  console.log(location.pathname)
+  console.log(location.port)
+  console.log(location.protocol)
+}
+```
+
+**Métodos**
+
+- `.assign(url)`: Carga la url que le indiquemos.
+
+- `.reload(sinCache)`: Recarga la página actual. `sinCache` por defecto vale false.
+
+- `.replace(url)`: Carga una nueva página reemplazando la anterior en el historial.
+
+#### Screen
+
+Representa la pantalla del dispositivo. El objeto `screen` nos provee de información relativa a la pantalla donde se está renderizando el contenido.
+
+```javascript
+
+  const informacionPantalla = () => {
+    console.log("availTop:", window.screen.availTop);
+    console.log("availLeft:", window.screen.availLeft);
+    console.log("availHeight:", window.screen.availHeight);
+    console.log("availWidth:", window.screen.availWidth);
+    console.log("colorDepth:", window.screen.colorDepth);
+    console.log("height:", window.screen.height);
+    console.log("left:", window.screen.left);
+    console.log("orientation:", window.screen.orientation);
+    console.log("pixelDepth:", window.screen.pixelDepth);
+    console.log("top:", window.screen.top);
+    console.log("width:", window.screen.width);
+  }
+```
+
+
 #### Document
 
 DOM (Document Object Model) representa al documento HTML con el que estamos tratando. Accedemos a él usando `document` o `window.document`. Esta representación se hace en forma de árbol de nodos. Cada nodo puede tener o no hijos y, salvo el nodo raíz, tendrá un padre. Al ser una representación del HTML, el nodo raíz siempre será `document`, que tiene un nodo hijo `html` que, a su vez, tiene dos nodos hijos, `head` y `body`.
@@ -310,7 +405,7 @@ Uno de las muchas cosas que podemos conseguir gracias a las APIs de navegador es
 Se tratan del mecanismo más tradicional para almacenar datos de sesión. Estas almacenan un par clave-valor en formato texto. Tradicionalmente, son enviadas por el servidor a través de la cabecera `Set-Cookie` indicando el nombre de la Cookie y el contenido así como su configuración: tiempo de expiración (`expires`), dominio (`domain`), si sólo funciona por https (`secure`) y si se debe ocultar al código JS (`httponly`). Además, se pueden crear desde JS, pero no es una práctica muy recomendable ya que estas serán siempre inseguras. Es uno de los mecanismos más extendidos cuando se trata de persistir datos sensibles de sesión. Presentan las siguientes limiteaciones:
 
 - Espacio limitado: sólo 4KB por cookie. Algunos navegadores, además, limitan el tamaño por dominio. Cada navegador soporta un número máximo de cookies por dominio diferente. La practica más recomendable es no tener más de 30 cookies por dominio y que no ocupen en total más de 4KB.
-- Las cookies viajaran en todas las peticiones dentro del mismo dominio sin importar el tipo de recurso que se solicite en la cabecera `Cookie` hasta que caduquen.
+- Las cookies viajarán en todas las peticiones dentro del mismo dominio sin importar el tipo de recurso que se solicite en la cabecera `Cookie` hasta que caduquen.
 
 #### Trabajando con cookies
 
