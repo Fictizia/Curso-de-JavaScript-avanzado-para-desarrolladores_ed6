@@ -1,0 +1,15 @@
+{
+  "name": "proyecto",
+  "version": "1.0.0",
+  "description": "Mi proyecto de JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --watch scss -o css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-css-cli": "^5.2.1",
+    "node-sass": "^5.0.0"
+  }
+}
