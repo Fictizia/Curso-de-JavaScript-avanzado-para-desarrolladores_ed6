@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
+const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 
 //Compile scss into css

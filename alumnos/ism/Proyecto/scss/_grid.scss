@@ -1,5 +1,26 @@
 .grid {
-  background: blue;
-  color: red;
-  text-align: left;
+  background: lightblue;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  div {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    &.bomba {
+      background: fuchsia;
+    }
+    &.vacio {
+      background: blue
+    }
+    &.checked {
+      background: orange;
+    }
+    
+  }
 }

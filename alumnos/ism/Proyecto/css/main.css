@@ -1,4 +1,20 @@
 .grid {
-  background: blue;
-  color: red;
-  text-align: left; }
+  background: lightblue;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+  .grid div {
+    height: 40px;
+    width: 40px;
+    cursor: pointer; }
+    .grid div.bomba {
+      background: fuchsia; }
+    .grid div.vacio {
+      background: blue; }
+    .grid div.checked {
+      background: orange; }
