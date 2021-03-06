@@ -1,15 +1,23 @@
 {
-  "name": "proyecto",
+  "name": "proyectazo",
   "version": "1.0.0",
-  "description": "Mi proyecto de JavaScript",
-  "main": "index.js",
+  "description": "mi proyecto pa la fictizia",
+  "main": "script.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "clean-css-cli": "^5.2.1",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^5.0.0"
+  },
   "scripts": {
-    "scss": "node-sass --watch scss -o css"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "isoldilla/Curso-de-JavaScript-avanzado-para-desarrolladores_ed6/alumnos/ism/Proyecto/"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "clean-css-cli": "^5.2.1",
-    "node-sass": "^5.0.0"
-  }
+  "license": "ISC"
 }
