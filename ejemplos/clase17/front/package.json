@@ -1,0 +1,19 @@
+{
+    "name": "front",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "serve .",
+        "test": "jest .",
+        "test:e2e": "cypress run"
+    },
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "cypress": "^6.6.0",
+        "jest": "^26.6.3",
+        "webpack": "^5.6.0",
+        "webpack-cli": "^4.2.0"
+    }
+}

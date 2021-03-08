@@ -40,4 +40,5 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 14 | [Clase 14](teoria/clase14.md) | Patrones de diseño |
 | Clase 15 | [Clase 15](teoria/clase15.md) | APIS de Navegador: BOM & DOM, Drag&Drop, Intersection Observer y Persistencia |
 | Clase 16 | [Clase 16](teoria/clase16.md) | Testing: Teoría |
+| Clase 17 | Clase 17 | Testing: Práctica |
 
