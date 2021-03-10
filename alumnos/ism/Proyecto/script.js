@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let area = Math.pow(width, 2);
   let casillas = [];
   let bombas = 20;
+  let gameOver = false;
   //create board
   function crearTablero() {
     const bombasArray = Array(bombas).fill('bomba');
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const juegoArray = vacioArray.concat(bombasArray);
     const randomJuego = juegoArray.sort(() => Math.random() -0.5);
     console.log(randomJuego);
+    
     // get shuffled game array with random bombs
     for(let i = 0; i < area; i++) {
       //Crear un div por casilla
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
           total ++
         }
         //SURESTE
-        if (i < 90 && !bordeDerecho && casillas[i + 1 + width].classList.contains('bomba')) {
+        if (i < 89 && !bordeDerecho && casillas[i + 1 + width].classList.contains('bomba')) {
           total ++
         }
         //SUR
@@ -84,16 +86,89 @@ document.addEventListener('DOMContentLoaded', () => {
   crearTablero();
 
   function click(casilla) {
+    let casillaID = casilla.id;
+    console.log(casillaID);
+    //Si es Game over, no pasa nada
+    if (gameOver) return;
+    // Si la casilla ya ha sido checkeada o tiene una bandera, no pasa nada
+    if (casilla.classList.contains('checked') || casilla.classList.contains('bandera')) return;
     if (casilla.classList.contains('bomba')) {
-      alert("Game OVER pringao :)");
-    } else {
+      alert("Game OVER 😿");
+    }
+    else {
       let total = casilla.getAttribute('data');
+      // Si la casilla no es 0
       if (total != 0) {
+        // Añadir la clase checked y escribir el número total
         casilla.classList.add('checked');
         casilla.innerHTML = total;
         return;
       }
-      casilla.classList.add('checked');
+      //Se va a desplegar cuando sea una casilla vacía y con data="0"
+      comprobarCasilla(casilla, casillaID);
     }
+    // Para lo demás, añadir la clase checked
+    casilla.classList.add('checked');
+    
   }
+
+  //Check neighboring squares once square is clicked
+  function comprobarCasilla(casilla, casillaID) {
+    const bordeIzquierdo = (casillaID % width === 0);
+    const bordeDerecho = (casillaID % width === width -1);
+
+    setTimeout(() => {
+      //OESTE: -1
+      if (casillaID > 0 && !bordeIzquierdo) {
+        const nuevoID = casillas[parseInt(casillaID) -1].id;
+        const nuevaCasilla = document.getElementById(nuevoID);
+        click(nuevaCasilla);
+      }
+      //NOROESTE: -1-width
+      if (casillaID > 10 && !bordeIzquierdo) {
+        const nuevoID = casillas[parseInt(casillaID) -1 -width].id;
+        const nuevaCasilla = document.getElementById(nuevoID);
+        click(nuevaCasilla);
+      }
+      //NORTE: -width
+      if (casillaID > 9) {
+        const nuevoID = casillas[parseInt(casillaID) -width].id;
+        const nuevaCasilla = document.getElementById(nuevoID);
+        click(nuevaCasilla);
+      }
+      //NORESTE: +1-2width
+      if (casillaID > 9 && !bordeDerecho) {
+        const nuevoID = casillas[parseInt(casillaID) +1 -width].id;
+        const nuevaCasilla = document.getElementById(nuevoID);
+        click(nuevaCasilla);
+      }
+      //ESTE: +1
+      if (casillaID < 99 && !bordeDerecho) {
+        const nuevoID = casillas[parseInt(casillaID) +1].id;
+        console.log(nuevoID);
+        const nuevaCasilla = document.getElementById(nuevoID);
+        click(nuevaCasilla);
+      }
+      //SURESTE: +1+width
+      if (casillaID < 89 && !bordeDerecho) {
+        const nuevoID = casillas[parseInt(casillaID) +1 +width].id;
+        const nuevaCasilla = document.getElementById(nuevoID);
+        click(nuevaCasilla);
+      }
+      //SUR: +width
+      if (casillaID < 90) {
+        const nuevoID = casillas[parseInt(casillaID) +width].id;
+        const nuevaCasilla = document.getElementById(nuevoID);
+        click(nuevaCasilla);
+      }
+      //SUROESTE: -1 + width
+      if (casillaID < 90 && !bordeIzquierdo) {
+        const nuevoID = casillas[parseInt(casillaID) -1 +width].id;
+        const nuevaCasilla = document.getElementById(nuevoID);
+        click(nuevaCasilla);
+      }
+    }, 10);
+  }
+
+
 })
