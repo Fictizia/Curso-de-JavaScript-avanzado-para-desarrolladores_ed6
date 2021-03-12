@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+  window.onload = function(){ 
+    alert("Hola, a jugar");
+  }
   const grid = document.querySelector('.grid');
   let width = 10;
   let area = Math.pow(width, 2);
   let casillas = [];
   let bombas = 20;
-  let gameOver = false;
+  let banderas = 0;
+  let isGameOver = false;
   //create board
   function crearTablero() {
     const bombasArray = Array(bombas).fill('bomba');
@@ -26,9 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
       //Meter las casillas en el array vacío casillas
       casillas.push(casilla);
       
+      //Click normal
       casilla.addEventListener('click', function(e) {
         click(casilla)
-      }) 
+      });
+
+      //Click derecho O ctrl+ click izquierdo
+      casilla.oncontextmenu = function(e) {
+        e.preventDefault();
+        clavarBandera(casilla);
+      }
     }
 
     //Añadir números
@@ -85,15 +96,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   crearTablero();
 
+  function clavarBandera(casilla) {
+    if (isGameOver) return;
+    if (!casilla.classList.contains('checked') && (banderas < bombas)) {
+      if (!casilla.classList.contains('bandera')) {
+        casilla.classList.add('bandera');
+        casilla.innerHTML = "🇪🇸";
+        banderas++;
+        checkWin();
+      } else {
+        casilla.classList.remove('bandera');
+        casilla.innerHTML = "";
+        banderas--
+      }
+    }
+  }
+
   function click(casilla) {
     let casillaID = casilla.id;
     console.log(casillaID);
     //Si es Game over, no pasa nada
-    if (gameOver) return;
+    if (isGameOver) return;
     // Si la casilla ya ha sido checkeada o tiene una bandera, no pasa nada
     if (casilla.classList.contains('checked') || casilla.classList.contains('bandera')) return;
     if (casilla.classList.contains('bomba')) {
-      alert("Game OVER 😿");
+      gameOver();
     }
     else {
       let total = casilla.getAttribute('data');
@@ -170,5 +197,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 10);
   }
 
+  function gameOver(casilla) {
+    console.log('BOOM!');
+    isGameOver = true;
 
+    casillas.forEach(casilla => {
+      if (casilla.classList.contains('bomba')) {
+        casilla.innerHTML = "💣"
+      }
+    });
+  }
+
+  function checkWin() {
+    aciertos = 0;
+    for (let i = 0; i < casillas.length; i++) {
+      if (casillas[i].classList.contains('bandera') && casillas[i].classList.contains('bomba')) {
+        aciertos++
+      }
+      if (aciertos === bombas) {
+        alertaFinal();
+        isGameOver = true;
+      }
+    }
+  }
+
+  function alertaFinal() {
+    var alertasRancias = ["biba", "ole", "guau", "todio"];
+    var a = Math.floor(Math.random() * alertasRancias.length);
+    alert(alertasRancias[a], 3000);
+  }
 })
