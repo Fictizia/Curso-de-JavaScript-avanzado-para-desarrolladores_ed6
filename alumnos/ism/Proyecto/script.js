@@ -1,7 +1,15 @@
+
 document.addEventListener('DOMContentLoaded', () => {
-  window.onload = function(){ 
-    alert("Hola, a jugar");
-  }
+  Swal.fire({
+    title: "Buenas",
+    text: "Eres imbécil",
+    confirmButtonText: "okis",
+    stopKeydownPropagation: true,
+    customClass: {
+      popup: 'alert-container',
+    }
+  });
+  
   const grid = document.querySelector('.grid');
   let width = 10;
   let area = Math.pow(width, 2);
