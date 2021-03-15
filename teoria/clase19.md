@@ -71,7 +71,7 @@ Los worker son una herramienta muy potente y su uso está muy relacionado con ta
 - Asegurar que una petición HTTP se realice.
 - Hacer múltiples peticiones HTTP.
 
-#### Librerías
+#### Librerías
 
 - [ThreadJS](https://threads.js.org/)
 - [ParallelJS](https://parallel.js.org/)
@@ -136,7 +136,7 @@ self.addEventListener('install', (event) => {
 
 6. `Terminated`: Tras permanecer mucho tiempo en estado pasivo, el SW liberará los recursos que ocupa en el navegador pasando al estado `terminated`. Cuando esto ocurre, se liberan las cachés que esté manejando.
 
-#### Uso
+#### Uso
 
 Los service workers se usan normalmente en combinación con Cache Storage. Esta API se basa en promesas y ofrece los siguientes métodos:
 
@@ -150,8 +150,8 @@ Los service workers se usan normalmente en combinación con Cache Storage. Esta 
 const miCache = 'v1.0'
 
 const archivos = [
-    '/ejemplos/clase17/sw/style.css',
-    '/ejemplos/clase17/sw/script.js'
+    '/ejemplos/clase19/sw/style.css',
+    '/ejemplos/clase19/sw/script.js'
 ]
 
 self.addEventListener('install', (evento) => {
