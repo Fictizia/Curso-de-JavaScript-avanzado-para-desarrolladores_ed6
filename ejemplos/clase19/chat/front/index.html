@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/navbar.css">
+  <link rel="stylesheet" href="styles/chat.css">
+</head>
+<body class="app">
+
+<nav class="navbar">
+  <ul class="navbar-list">
+    <li class="navbar-list-item">
+      <a class="navbar-link">Live-chat</a>
+    </li>
+  </ul>
+</nav>
+
+<main id="chatView" class="chat-content is-hidden">
+  <div id="scrollArea" class="messages-area">
+    <ul id="messageList" class="message-list">
+      <li class="message-list-item is-warning">
+        <p class="message-warning">Aun no hay mensajes</p>
+      </li>
+    </ul>
+  </div>
+  <div class="input-area">
+    <form class="chat-form" id="chatForm">
+      <textarea class="chat-input" name="message" id="chatInput" maxlength="244" placeholder="Escriba aquí su mensaje"></textarea>
+      <button type="submit" class="chat-button">Enviar</button>
+    </form>
+  </div>
+</main>
+
+<main id="usernameView" class="configuration-content">
+  <h1 class="main-title">Hola holita</h1>
+  <p class="main-description">Bienvenid@ al chat del Curso de JavaScript Avanzado. Con este chat veremos el potencial del uso de los sockets en el navegador.</p>
+  <form class="username-form" id="usernameForm">
+    <input maxlength="20" type="text" id="usernameInput" class="username-input" placeholder="Nombre de usuario"/>
+    <button id="usernameButton" class="username-button">Enviar</button>
+  </form>
+</main>
+<script src="src/index.js" type="module"></script>
+</body>
+</html>
