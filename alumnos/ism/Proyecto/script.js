@@ -1,21 +1,18 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-  Swal.fire({
-    title: "Buenas",
-    text: "Eres imbécil",
-    confirmButtonText: "okis",
-    stopKeydownPropagation: true,
-    customClass: {
-      popup: 'alert-container',
-    }
-  });
   
   const grid = document.querySelector('.grid');
+  const stopwatch = document.getElementById('#stopwatch');
   let width = 10;
   let area = Math.pow(width, 2);
   let casillas = [];
   let bombas = 20;
   let banderas = 0;
+
+  let offset;
+  let empieza;
+
+  let tiempo = crearTemporizador();
   let isGameOver = false;
   //create board
   function crearTablero() {
@@ -40,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       //Click normal
       casilla.addEventListener('click', function(e) {
+        console.log('empieza cronómetro');
         click(casilla)
       });
 
@@ -110,19 +108,26 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!casilla.classList.contains('bandera')) {
         casilla.classList.add('bandera');
         casilla.innerHTML = "🇪🇸";
+        
         banderas++;
+        console.log(banderas);
+        
+       
         checkWin();
       } else {
         casilla.classList.remove('bandera');
         casilla.innerHTML = "";
         banderas--
+        console.log(banderas);
+
       }
+      contarBanderas();
     }
   }
 
   function click(casilla) {
     let casillaID = casilla.id;
-    console.log(casillaID);
+    // console.log(casillaID);
     //Si es Game over, no pasa nada
     if (isGameOver) return;
     // Si la casilla ya ha sido checkeada o tiene una bandera, no pasa nada
@@ -146,6 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
     casilla.classList.add('checked');
     
   }
+
+//  function start() {
+//   if(!empieza) {
+//     offset = Date.now();
+//     empieza = setInterval(update, 1);
+//   }
+//  }
 
   //Check neighboring squares once square is clicked
   function comprobarCasilla(casilla, casillaID) {
@@ -203,6 +215,14 @@ document.addEventListener('DOMContentLoaded', () => {
         click(nuevaCasilla);
       }
     }, 10);
+  }
+
+  // function displayBandera(num) {
+  //   var contador = document.getElementById("banderas").innerHTML = cifra + num;
+  //   cifra = contador;
+  // }
+  function contarBanderas() {
+    document.getElementById("banderas").innerHTML = banderas;
   }
 
   function gameOver(casilla) {

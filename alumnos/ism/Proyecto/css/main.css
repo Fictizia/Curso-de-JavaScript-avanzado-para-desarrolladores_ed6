@@ -22,6 +22,16 @@ body {
     .grid div.checked {
       background: orange; }
 
+#banderas,
+#stopwatch {
+  width: 200px;
+  height: 50px;
+  background: lightblue; }
+
+.header {
+  display: flex;
+  justify-content: space-around; }
+
 .swal2-container .alert-container {
   border-radius: 0; }
 
