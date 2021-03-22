@@ -44,6 +44,7 @@ function maximoDivisible(divisor, limite) {
       max = i;
     }
   }
+  return max;
 }
 console.log(maximoDivisible(7, 15));
 
