@@ -3,18 +3,53 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const grid = document.querySelector('.grid');
   const stopwatch = document.getElementById('#stopwatch');
+  const contadorBanderas = document.getElementById("banderas");
   let width = 10;
   let area = Math.pow(width, 2);
   let casillas = [];
   let bombas = 20;
   let banderas = 0;
 
-  let offset;
-  let empieza;
-
-  let tiempo = crearTemporizador();
   let isGameOver = false;
   //create board
+
+  let seconds = 0;
+  let timer = document.getElementById('seconds');
+  let btnReset = document.getElementById('reset');
+  let btnStop = document.getElementById('stop');
+  const reload = document.getElementById('reload');
+
+  reload.addEventListener('click', _ => {
+      location.reload();
+  });
+  
+
+  btnReset.addEventListener('click', function() {
+    reset();
+  });
+  btnStop.addEventListener('click', function() {
+    stop();
+  });
+  var counter = setInterval(incrementSeconds, 1000);
+  console.log(counter)
+
+  function incrementSeconds() {
+      seconds += 1;
+      timer.innerHTML = seconds;
+  }
+  function reset() {
+    seconds = 0;
+    timer.innerHTML = 0;
+    borrarBanderas();
+    contadorBanderas.innerHTML = 0;
+  }
+  function stop() {
+      clearInterval(counter);
+
+  }
+
+  // var interval = setInterval(callback, 1000);
+
   function crearTablero() {
     const bombasArray = Array(bombas).fill('bomba');
     const vacioArray = Array(area - bombas).fill('vacio');
@@ -46,6 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         clavarBandera(casilla);
       }
+      //Mobile
+      casilla.addEventListener('long-press', function(e) {
+        e.preventDefault();
+        clavarBandera(casilla);
+      });
     }
 
     //Añadir números
@@ -101,6 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   crearTablero();
+
+  
 
   function clavarBandera(casilla) {
     if (isGameOver) return;
@@ -222,12 +264,33 @@ document.addEventListener('DOMContentLoaded', () => {
   //   cifra = contador;
   // }
   function contarBanderas() {
-    document.getElementById("banderas").innerHTML = banderas;
+    contadorBanderas.innerHTML = banderas;
+  }
+
+  function borrarBanderas(casilla) {
+    console.log("start over");
+    casillas.forEach(casilla => {
+      if (casilla.classList.contains('checked') || casilla.classList.contains('bandera')) {
+        casilla.classList.remove('checked');
+        casilla.innerHTML = "";
+        casilla.classList.remove('bandera');
+        banderas = 0;
+      }
+    });
   }
 
   function gameOver(casilla) {
     console.log('BOOM!');
     isGameOver = true;
+    console.log("Game over");
+    Swal.fire({
+      title: "has perdido",
+      text: "ahora hazme la comida por favor",     
+      confirmButtonText: "comprendido",
+      customClass: {
+        popup: 'alert-container instrucciones',
+      }
+    });
 
     casillas.forEach(casilla => {
       if (casilla.classList.contains('bomba')) {
@@ -243,15 +306,24 @@ document.addEventListener('DOMContentLoaded', () => {
         aciertos++
       }
       if (aciertos === bombas) {
-        alertaFinal();
+        setTimeout(alertaFinal, 1000);
         isGameOver = true;
       }
     }
   }
 
   function alertaFinal() {
-    var alertasRancias = ["biba", "ole", "guau", "todio"];
+    var alertasRancias = ["Eso te lo hago yo en la mitad", "Nada mal pa ser tía xdd", "ni machismo ni feminismo, igualdad"];
     var a = Math.floor(Math.random() * alertasRancias.length);
-    alert(alertasRancias[a], 3000);
+    // window.alert(alertasRancias[a]);
+    Swal.fire({
+      title: "Instrucciones",
+      text: alertasRancias[a],      
+      confirmButtonText: "comprendido",
+      customClass: {
+        popup: 'alert-container instrucciones',
+      }
+    })
+
   }
 })

@@ -1,5 +1,6 @@
 body {
-  font-family: "NB Mono"; }
+  font-family: "NB Mono Regular";
+  background: #EDEDED; }
 
 .grid {
   background: lightblue;
@@ -10,20 +11,47 @@ body {
   flex-wrap: wrap;
   left: 50%;
   top: 50%;
+  border: 0.01rem solid #000;
   transform: translate(-50%, -50%); }
   .grid div {
     height: 40px;
     width: 40px;
-    cursor: pointer; }
+    cursor: pointer;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 40px;
+    font-family: "NB Mono Bold";
+    -webkit-text-stroke: 1px #000;
+    box-shadow: 0 0 0 0.03rem #000 inset; }
+    .grid div[data="1"] {
+      color: #F90D0D; }
+    .grid div[data="2"] {
+      color: #F4E52A; }
+    .grid div[data="3"] {
+      color: #06CE35; }
+    .grid div[data="4"] {
+      color: #007AFF; }
+    .grid div[data="5"] {
+      color: #F27019; }
+    .grid div[data="6"] {
+      color: #EDEDED; }
     .grid div.bomba {
       background: fuchsia; }
     .grid div.vacio {
-      background: blue; }
+      background: #FFF; }
     .grid div.checked {
-      background: orange; }
+      background: #9E9B9B; }
+  @media screen and (max-width: 576px) {
+    .grid {
+      width: 350px;
+      height: 350px; }
+      .grid div {
+        width: 35px;
+        height: 35px;
+        font-size: 1.75rem;
+        line-height: 35px; } }
 
-#banderas,
-#stopwatch {
+.counters div {
   width: 200px;
   height: 50px;
   background: lightblue; }
@@ -33,14 +61,26 @@ body {
   justify-content: space-around; }
 
 .swal2-container .alert-container {
-  border-radius: 0; }
+  border-radius: 0;
+  background-size: cover;
+  background-image: url("/img/bertin-osborne.jpeg"); }
 
 @font-face {
-  font-family: 'NB Mono';
+  font-family: 'NB Mono Light';
   src: url(../fonts/NB-Akademie-Mono-Std-Light.otf) format("opentype");
+  font-weight: 300; }
+
+@font-face {
+  font-family: 'NB Mono Regular';
+  src: url(../fonts/NB-Akademie-Mono-Std-Regular.otf) format("opentype");
   font-weight: 400; }
 
 @font-face {
-  font-family: 'NB Mono';
+  font-family: 'NB Mono Medium';
   src: url(../fonts/NB-Akademie-Mono-Std-Medium.otf) format("opentype");
-  font-weight: 600; }
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'NB Mono Bold';
+  src: url(../fonts/NB-Akademie-Mono-Std-Black.otf) format("opentype");
+  font-weight: 700; }
