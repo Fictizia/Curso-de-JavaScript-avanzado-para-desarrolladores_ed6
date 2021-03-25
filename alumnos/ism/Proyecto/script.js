@@ -264,7 +264,12 @@ document.addEventListener('DOMContentLoaded', () => {
   //   cifra = contador;
   // }
   function contarBanderas() {
-    contadorBanderas.innerHTML = banderas;
+    if (banderas < 10) {
+      contadorBanderas.innerHTML = "0" + banderas;
+    }
+    else {
+      contadorBanderas.innerHTML = banderas;
+    }
   }
 
   function borrarBanderas(casilla) {

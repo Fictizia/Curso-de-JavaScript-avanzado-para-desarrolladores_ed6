@@ -1,0 +1,23 @@
+button {
+  border: $border-base;
+  background: $lightgray;
+  padding: .5rem .75rem;
+  position: relative;
+  font-size: 1.5rem;
+  font-family: 'NB Mono Light';
+  box-shadow: 4px -4px 0px 0px $black;
+  max-height: 50px;
+  &:active {
+    transform: translate(4px, -4px);
+    box-shadow: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  &#reload {
+    background: $blue;
+  }
+  &#help {
+    background: $yellow;
+  }
+}
