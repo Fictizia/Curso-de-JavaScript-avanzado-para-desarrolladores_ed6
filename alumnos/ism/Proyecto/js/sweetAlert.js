@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Swal.fire({
-  //   title: "Buenas",
-  //   text: "Eres imbécil",
-  //   confirmButtonText: "okis",
-  //   stopKeydownPropagation: true,
-  //   customClass: {
-  //     popup: 'alert-container bienvenida',
-  //   }
-  // });
+  Swal.fire({
+    html: "<p>Bienvenido al Buscacuñados. En el siguiente tablero hay 20 cuñados bien enterrados. Encuéntralos señalándolos con la insignia patria</p><p>Si no sabes cómo se juega, lo gugleas, que los chavales queréis todo hecho para ayer y yo a tu edad no tenía tantas facilidades.</p>",
+    confirmButtonText: "Al ruedo",
+    stopKeydownPropagation: true,
+    buttonsStyling: false,
+    customClass: {
+      popup: 'alert-container bienvenida',
+      confirmButton: 'alert-button'
+    }
+  });
 
   const helpBtn = document.getElementById('help');
 

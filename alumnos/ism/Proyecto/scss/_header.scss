@@ -2,4 +2,13 @@
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  #reset {
+    margin-right: .5rem;
+  }
+  #pause {
+    margin-left: .5rem;
+  }
+  .face {
+    width: 50px;
+  }
 }

@@ -16,8 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let seconds = 0;
   let timer = document.getElementById('seconds');
   let btnReset = document.getElementById('reset');
-  let btnStop = document.getElementById('stop');
+  let btnPause = document.getElementById('pause');
   const reload = document.getElementById('reload');
+  let face = document.querySelector('.face img');
 
   reload.addEventListener('click', _ => {
       location.reload();
@@ -27,12 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
   btnReset.addEventListener('click', function() {
     reset();
   });
-  btnStop.addEventListener('click', function() {
-    stop();
+  btnPause.addEventListener('click', function() {
+    pause();
   });
   var counter = setInterval(incrementSeconds, 1000);
   console.log(counter)
 
+  
   function incrementSeconds() {
       seconds += 1;
       timer.innerHTML = seconds;
@@ -43,10 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
     borrarBanderas();
     contadorBanderas.innerHTML = 0;
   }
-  function stop() {
+  function pause() {
+    btnPause.classList.toggle('paused');
+    if (btnPause.classList.contains('paused')){
       clearInterval(counter);
-
+      btnPause.innerHTML = 'reanudar';
+    }
+    else{
+      if (counter) clearInterval(counter);
+      counter = setInterval(incrementSeconds, 1000);
+      btnPause.innerHTML = 'pausar';
+    }
   }
+  
 
   // var interval = setInterval(callback, 1000);
 
@@ -266,9 +277,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function contarBanderas() {
     if (banderas < 10) {
       contadorBanderas.innerHTML = "0" + banderas;
+      face.src="/img/cool.svg";
     }
     else {
       contadorBanderas.innerHTML = banderas;
+      face.src="/img/nervous.svg";
     }
   }
 
@@ -295,7 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
       customClass: {
         popup: 'alert-container instrucciones',
       }
-    });
+    }).then(function(){
+      location.reload();
+  });
 
     casillas.forEach(casilla => {
       if (casilla.classList.contains('bomba')) {
@@ -318,6 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function alertaFinal() {
+    face.src="/img/angry.svg";
     var alertasRancias = ["Eso te lo hago yo en la mitad", "Nada mal pa ser tía xdd", "ni machismo ni feminismo, igualdad"];
     var a = Math.floor(Math.random() * alertasRancias.length);
     // window.alert(alertasRancias[a]);
@@ -328,7 +344,9 @@ document.addEventListener('DOMContentLoaded', () => {
       customClass: {
         popup: 'alert-container instrucciones',
       }
-    })
+    }).then(function(){
+      location.reload();
+  });
 
   }
 })

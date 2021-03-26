@@ -1,7 +1,51 @@
 .swal2-container {
   .alert-container {
+    width: 50vw;
     border-radius: 0;
     background-size: cover;
-    background-image: url("/img/bertin-osborne.jpeg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 600px;
+    min-height: 300px;
+    padding: 1.5rem;
+    .swal2-content {
+      color: $black;
+      font-size: 1rem;
+      text-align: left;
+      font-family: 'NB Mono Light';
+      padding: 0;
+      p {
+        margin-top: 0;
+      }
+    }
+    .swal2-actions {
+      padding: 0;
+    }
+    &.bienvenida {
+      background-image: url(/img/bertin-osborne.png);
+      background-position: right bottom;
+      .swal2-content {
+        p {
+          width: 65%;
+        }
+      }
+      .swal2-actions {
+        justify-content: flex-start;
+        button {
+          background: $blue;
+        }
+      }
+     
+    }
+    @media screen and (max-width: 600px) {
+      &.bienvenida {
+        background-size: 50%;
+        .swal2-content {
+          p {
+            width: 85%;
+          }
+        }
+      }
+    }
   }
 }
