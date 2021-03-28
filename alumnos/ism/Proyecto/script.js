@@ -17,13 +17,30 @@ document.addEventListener('DOMContentLoaded', () => {
   let timer = document.getElementById('seconds');
   let btnReset = document.getElementById('reset');
   let btnPause = document.getElementById('pause');
+  let btnBg = document.getElementById('changeBg');
   const reload = document.getElementById('reload');
   let face = document.querySelector('.face img');
 
+  
   reload.addEventListener('click', _ => {
       location.reload();
   });
+
+  window.onload = function() {
+    changeBg();
+  }
   
+  let bgElements = document.querySelectorAll('.bg');
+  let backgrounds = ['/img/fachaleco.svg', '/img/paloselfie.svg', '/img/paella.svg', '/img/smartwatch.svg'];
+  let backgroundsCount = 0;
+
+  function changeBg() {
+    let number = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    bgElements.forEach(element => {
+      element.src = number;
+    })
+    console.log(number)
+  }
 
   btnReset.addEventListener('click', function() {
     reset();
@@ -34,7 +51,39 @@ document.addEventListener('DOMContentLoaded', () => {
   var counter = setInterval(incrementSeconds, 1000);
   console.log(counter)
 
-  
+
+
+  //Background
+  document.addEventListener('mousemove', function(e) {
+    let mouseX = e.pageX;
+    let mouseY = e.pageY;
+    // console.log(mouseX, mouseY);
+    bgElements.forEach(element => {
+      // element.style.top = mouseY;
+      let elementX = element.getBoundingClientRect().left;
+      let elementY = element.getBoundingClientRect().top;
+      let difX = mouseX - elementX;
+      let difY = mouseY - elementY;
+
+      let radians = Math.atan2(difY, difX);
+      let angle = radians * 180 / Math.PI;
+
+      element.style.transform = "rotate(" + angle + "deg)";
+    });
+  });
+
+  //Every 3 secs change fachaleco
+  // setInterval(function() {
+  //   count = count + 1;
+  //   count = count % backgrounds.length;
+
+  //   let image = backgrounds[count];
+
+  //   bgElements.forEach(element => {
+  //     element.src = image;
+  //   })
+  // }, 3000)
+
   function incrementSeconds() {
       seconds += 1;
       timer.innerHTML = seconds;
@@ -58,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
+
 
   // var interval = setInterval(callback, 1000);
 
@@ -277,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function contarBanderas() {
     if (banderas < 10) {
       contadorBanderas.innerHTML = "0" + banderas;
-      face.src="/img/cool.svg";
+      face.src="/img/chill.svg";
     }
     else {
       contadorBanderas.innerHTML = banderas;

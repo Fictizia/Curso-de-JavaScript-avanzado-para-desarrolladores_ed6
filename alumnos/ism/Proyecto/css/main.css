@@ -1,3 +1,41 @@
+img.bg {
+  z-index: -1;
+  position: absolute;
+  height: 200px; }
+  img.bg[src="/img/paloselfie.svg"] {
+    height: 300px; }
+  img.bg.one {
+    top: 30%;
+    left: 20%;
+    animation: levitar1 1s infinite ease-in-out alternate; }
+  img.bg.two {
+    top: 60%;
+    left: 90%;
+    animation: levitar2 1s infinite ease-in-out alternate; }
+  img.bg.three {
+    top: 70%;
+    left: 10%; }
+  img.bg.four {
+    top: 10%;
+    left: 10%; }
+  img.bg.five {
+    top: 10%;
+    left: 50%; }
+  img.bg.six {
+    top: 40%;
+    left: 70%; }
+  img.bg.seven {
+    top: 60%;
+    left: 30%; }
+
+@keyframes levitar1 {
+  100% {
+    top: 10%; } }
+
+@keyframes levitar2 {
+  100% {
+    top: 40%; } }
+
 body {
   font-family: "NB Mono Regular";
   background: #EDEDED; }
@@ -37,6 +75,7 @@ button.alert-button {
   .gameboard .counters {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     font-family: "NB Mono Architekt";
     min-height: 45px;
     margin-bottom: .5rem;
@@ -47,6 +86,10 @@ button.alert-button {
       color: #F90D0D; }
     .gameboard .counters #banderas {
       text-align: left; }
+    .gameboard .counters .face {
+      text-align: center; }
+      .gameboard .counters .face img {
+        width: 100px; }
     .gameboard .counters #seconds {
       text-align: right; }
   .gameboard .grid {

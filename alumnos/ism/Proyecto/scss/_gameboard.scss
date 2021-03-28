@@ -6,6 +6,7 @@
   .counters {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     font-family: $font-family-arch;
     min-height: 45px;
     margin-bottom: .5rem;
@@ -18,6 +19,13 @@
     #banderas {
       text-align: left;
     }
+    .face {
+      text-align: center;
+      img {
+        width: 100px;
+      }
+    }
+    
     #seconds {
       text-align: right;
     }

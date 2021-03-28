@@ -1,0 +1,49 @@
+img.bg {
+  z-index: -1;
+  position: absolute;
+  height: 200px;
+  &[src="/img/paloselfie.svg"] {
+    height: 300px;
+  }
+    &.one {
+      top: 30%;
+      left: 20%;
+      animation: levitar1 1s infinite ease-in-out alternate;
+    }
+    &.two {
+      top: 60%;
+      left: 90%;
+      animation: levitar2 1s infinite ease-in-out alternate;
+    }
+    &.three {
+      top: 70%;
+      left: 10%;
+    }
+    &.four {
+      top: 10%;
+      left: 10%;
+    }
+    &.five {
+      top: 10%;
+      left: 50%;
+    }
+    &.six {
+      top: 40%;
+      left: 70%;
+    }
+    &.seven {
+      top: 60%;
+      left: 30%;
+    }
+}
+
+@keyframes levitar1 {
+    100% {
+        top: 10%;
+    }
+}
+@keyframes levitar2 {
+  100% {
+      top: 40%;
+  }
+}
