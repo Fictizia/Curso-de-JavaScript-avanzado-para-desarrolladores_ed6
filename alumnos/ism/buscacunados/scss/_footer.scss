@@ -1,0 +1,41 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  
+  h3 {
+    text-transform: uppercase;
+    font-family: $font-family-light;
+    font-weight: $font-weight-light;
+    position: relative;
+    font-size: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    #reload {
+      order: 1;
+      flex: 1;
+      margin-right: .5rem;
+    }
+    #help {
+      order: 2;
+      flex: 1;
+      margin-left: .5rem;
+    }
+    h3 {
+      order: 3;
+      text-align: center;
+      margin-left: 1.5rem;
+      margin-top: 3rem;
+      font-size: .8rem;
+      width: 100%;
+      &:before {
+        left: -5px;
+      }
+    }
+  }
+}

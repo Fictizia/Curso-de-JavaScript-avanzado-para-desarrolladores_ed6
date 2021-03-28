@@ -1,0 +1,90 @@
+.swal2-container {
+  .alert-container {
+    width: 50vw;
+    border-radius: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 600px;
+    min-height: 300px;
+    padding: 1.5rem;
+    background-position: right bottom;
+
+    .swal2-header {
+      padding: 0;
+      display: block;
+      .swal2-title {
+        text-align: left;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        font-size: 1rem;
+        color: $black;
+        font-family: 'NB Mono Light';
+      }
+    }
+    .swal2-content {
+      color: $black;
+      font-size: 1rem;
+      text-align: left;
+      font-family: 'NB Mono Light';
+      padding: 0;
+      p {
+        margin-top: 0;
+        width: 65%;
+      }
+      span {
+        color: $red;
+      }
+    }
+    .swal2-actions {
+      padding: 0;
+      justify-content: flex-start;
+    }
+    &.bienvenida {
+      background-image: url("../img/bertin-osborne.png");
+      background-size: 45%;
+      .swal2-actions {
+        button {
+          background: $blue;
+        }
+      }
+    }
+    &.ganar {
+      background-image: url("../img/javier-cardenas.png");
+      background-color: $green;
+      background-size: 25%;
+      .swal2-actions {
+        button {
+          background: $yellow;
+        }
+      }
+    }
+    &.perder {
+      background-image: url("../img/alvaro-ojeda.png");
+      background-color: $red;
+      .swal2-actions {
+        button {
+          background: $yellow;
+        }
+      }
+    }
+    &.instrucciones {
+      background-image: url("../img/carlos-herrera.png");
+      background-color: $yellow;
+      background-size: 45%;
+      .swal2-actions {
+        button {
+          background: $blue;
+        }
+      }
+    }
+    @media screen and (max-width: 600px) {
+        background-size: 50%;
+        .swal2-content {
+          p {
+            width: 85%;
+          }
+        }
+    }
+  }
+}

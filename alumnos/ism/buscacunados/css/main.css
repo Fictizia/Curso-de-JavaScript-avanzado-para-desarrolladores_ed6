@@ -1,0 +1,339 @@
+img.bg {
+  z-index: -1;
+  position: absolute;
+  height: 200px; }
+  img.bg[src="img/paloselfie.svg"] {
+    height: 300px; }
+  img.bg[src="img/smartwatch.svg"] {
+    height: 150px; }
+  img.bg.one {
+    top: 35%;
+    left: 25%;
+    animation: levitar1 2s infinite ease-in-out alternate; }
+  img.bg.two {
+    top: 60%;
+    left: 90%;
+    animation: levitar2 2s infinite ease-in-out alternate; }
+  img.bg.three {
+    top: 70%;
+    left: 10%;
+    animation: levitar3 2s infinite ease-in-out alternate; }
+  img.bg.four {
+    top: 20%;
+    left: 5%;
+    animation: levitar4 2s infinite ease-in-out alternate; }
+  img.bg.five {
+    top: 10%;
+    left: 50%;
+    animation: levitar5 2s infinite ease-in-out alternate; }
+  img.bg.six {
+    top: 15%;
+    right: 10%;
+    animation: levitar6 2s infinite ease-in-out alternate; }
+  img.bg.seven {
+    bottom: 5%;
+    left: 35%;
+    animation: levitar7 2s infinite ease-in-out alternate; }
+  img.bg.eight {
+    top: -10%;
+    left: 30%;
+    animation: levitar8 2s infinite ease-in-out alternate; }
+  img.bg.nine {
+    bottom: 20%;
+    right: 30%;
+    animation: levitar9 2s infinite ease-in-out alternate; }
+  img.bg.ten {
+    bottom: -20%;
+    right: 20%;
+    animation: levitar10 2s infinite ease-in-out alternate; }
+  @media screen and (max-width: 600px) {
+    img.bg {
+      height: 100px; }
+      img.bg[src="img/paloselfie.svg"] {
+        height: 200px; }
+      img.bg[src="img/smartwatch.svg"] {
+        height: 50px; } }
+
+@keyframes levitar1 {
+  100% {
+    top: 15%; } }
+
+@keyframes levitar2 {
+  100% {
+    top: 40%; } }
+
+@keyframes levitar3 {
+  100% {
+    top: 50%; } }
+
+@keyframes levitar4 {
+  100% {
+    top: 0%; } }
+
+@keyframes levitar5 {
+  100% {
+    top: -10%; } }
+
+@keyframes levitar6 {
+  100% {
+    top: -5%; } }
+
+@keyframes levitar7 {
+  100% {
+    bottom: 25%; } }
+
+@keyframes levitar8 {
+  100% {
+    top: -30%; } }
+
+@keyframes levitar9 {
+  100% {
+    bottom: 40%; } }
+
+@keyframes levitar10 {
+  100% {
+    bottom: 0%; } }
+
+body {
+  font-family: "NB Mono Regular";
+  background: #EDEDED;
+  overflow: hidden; }
+
+button,
+button.alert-button {
+  cursor: pointer;
+  border: 0.03rem solid #000;
+  border-radius: none;
+  background: #EDEDED;
+  padding: .5rem 1rem;
+  position: relative;
+  font-size: 1rem;
+  font-family: 'NB Mono Light';
+  box-shadow: 4px -4px 0px 0px #000;
+  min-width: 145px;
+  max-height: 50px;
+  height: 50px; }
+  button:active,
+  button.alert-button:active {
+    transform: translate(4px, -4px);
+    box-shadow: none; }
+  button:focus,
+  button.alert-button:focus {
+    outline: none; }
+  button#reload,
+  button.alert-button#reload {
+    background: #007AFF; }
+  button#help,
+  button.alert-button#help {
+    background: #F4E52A; }
+
+.gameboard {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+  .gameboard .counters {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: "NB Mono Architekt";
+    min-height: 45px;
+    margin-bottom: .5rem;
+    font-size: 3rem; }
+    .gameboard .counters div {
+      flex: 1;
+      -webkit-text-stroke: 1px #000;
+      color: #F90D0D; }
+    .gameboard .counters #banderas {
+      text-align: left; }
+    .gameboard .counters .face {
+      text-align: center; }
+      .gameboard .counters .face img {
+        width: 100px; }
+    .gameboard .counters #seconds {
+      text-align: right; }
+  .gameboard .grid {
+    background: lightblue;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 0.01rem solid #000; }
+    .gameboard .grid div {
+      height: 40px;
+      width: 40px;
+      cursor: pointer;
+      font-size: 2rem;
+      text-align: center;
+      line-height: 40px;
+      font-family: "NB Mono Bold";
+      -webkit-text-stroke: 1px #000;
+      box-shadow: 0 0 0 0.03rem #000 inset;
+      background: #FFF; }
+      .gameboard .grid div[data="1"] {
+        color: #F90D0D; }
+      .gameboard .grid div[data="2"] {
+        color: #F4E52A; }
+      .gameboard .grid div[data="3"] {
+        color: #06CE35; }
+      .gameboard .grid div[data="4"] {
+        color: #007AFF; }
+      .gameboard .grid div[data="5"] {
+        color: #F27019; }
+      .gameboard .grid div[data="6"] {
+        color: #EDEDED; }
+      .gameboard .grid div.checked {
+        background: #9E9B9B; }
+  @media screen and (max-width: 600px) {
+    .gameboard {
+      top: 45%; }
+      .gameboard .grid {
+        width: 300px;
+        height: 300px; }
+        .gameboard .grid div {
+          width: 30px;
+          height: 30px;
+          font-size: 1.5rem;
+          line-height: 30px; } }
+  @media screen and (min-width: 601px) and (max-width: 768px) {
+    .gameboard .grid {
+      width: 350px;
+      height: 350px; }
+      .gameboard .grid div {
+        width: 35px;
+        height: 35px;
+        font-size: 1.75rem;
+        line-height: 35px; } }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem; }
+  .header #reset {
+    margin-right: .5rem; }
+  .header #pause {
+    margin-left: .5rem; }
+  .header .face {
+    width: 50px; }
+
+.swal2-container .alert-container {
+  width: 50vw;
+  border-radius: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 600px;
+  min-height: 300px;
+  padding: 1.5rem;
+  background-position: right bottom; }
+  .swal2-container .alert-container .swal2-header {
+    padding: 0;
+    display: block; }
+    .swal2-container .alert-container .swal2-header .swal2-title {
+      text-align: left;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      font-size: 1rem;
+      color: #000;
+      font-family: 'NB Mono Light'; }
+  .swal2-container .alert-container .swal2-content {
+    color: #000;
+    font-size: 1rem;
+    text-align: left;
+    font-family: 'NB Mono Light';
+    padding: 0; }
+    .swal2-container .alert-container .swal2-content p {
+      margin-top: 0;
+      width: 65%; }
+    .swal2-container .alert-container .swal2-content span {
+      color: #F90D0D; }
+  .swal2-container .alert-container .swal2-actions {
+    padding: 0;
+    justify-content: flex-start; }
+  .swal2-container .alert-container.bienvenida {
+    background-image: url("../img/bertin-osborne.png");
+    background-size: 45%; }
+    .swal2-container .alert-container.bienvenida .swal2-actions button {
+      background: #007AFF; }
+  .swal2-container .alert-container.ganar {
+    background-image: url("../img/javier-cardenas.png");
+    background-color: #06CE35;
+    background-size: 25%; }
+    .swal2-container .alert-container.ganar .swal2-actions button {
+      background: #F4E52A; }
+  .swal2-container .alert-container.perder {
+    background-image: url("../img/alvaro-ojeda.png");
+    background-color: #F90D0D; }
+    .swal2-container .alert-container.perder .swal2-actions button {
+      background: #F4E52A; }
+  .swal2-container .alert-container.instrucciones {
+    background-image: url("../img/carlos-herrera.png");
+    background-color: #F4E52A;
+    background-size: 45%; }
+    .swal2-container .alert-container.instrucciones .swal2-actions button {
+      background: #007AFF; }
+  @media screen and (max-width: 600px) {
+    .swal2-container .alert-container {
+      background-size: 50%; }
+      .swal2-container .alert-container .swal2-content p {
+        width: 85%; } }
+
+@font-face {
+  font-family: 'NB Mono Light';
+  src: url(../fonts/NB-Akademie-Mono-Std-Light.otf) format("opentype");
+  font-weight: 300; }
+
+@font-face {
+  font-family: 'NB Mono Architekt';
+  src: url(../fonts/NB-Architekt-Light.otf) format("opentype");
+  font-weight: 300; }
+
+@font-face {
+  font-family: 'NB Mono Regular';
+  src: url(../fonts/NB-Akademie-Mono-Std-Regular.otf) format("opentype");
+  font-weight: 400; }
+
+@font-face {
+  font-family: 'NB Mono Medium';
+  src: url(../fonts/NB-Akademie-Mono-Std-Medium.otf) format("opentype");
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'NB Mono Bold';
+  src: url(../fonts/NB-Akademie-Mono-Std-Black.otf) format("opentype");
+  font-weight: 700; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  right: 0;
+  padding: 1rem; }
+  .footer h3 {
+    text-transform: uppercase;
+    font-family: "NB Mono Light";
+    font-weight: 300;
+    position: relative;
+    font-size: 1rem; }
+  @media screen and (max-width: 600px) {
+    .footer {
+      flex-wrap: wrap; }
+      .footer #reload {
+        order: 1;
+        flex: 1;
+        margin-right: .5rem; }
+      .footer #help {
+        order: 2;
+        flex: 1;
+        margin-left: .5rem; }
+      .footer h3 {
+        order: 3;
+        text-align: center;
+        margin-left: 1.5rem;
+        margin-top: 3rem;
+        font-size: .8rem;
+        width: 100%; }
+        .footer h3:before {
+          left: -5px; } }
