@@ -2,10 +2,10 @@ img.bg {
   z-index: -1;
   position: absolute;
   height: 200px;
-  &[src="/img/paloselfie.svg"] {
+  &[src="img/paloselfie.svg"] {
     height: 300px;
   }
-  &[src="/img/smartwatch.svg"] {
+  &[src="img/smartwatch.svg"] {
     height: 150px;
   }
     &.one {
@@ -61,10 +61,10 @@ img.bg {
 
     @media screen and (max-width: 600px) {
       height: 100px;
-      &[src="/img/paloselfie.svg"] {
+      &[src="img/paloselfie.svg"] {
         height: 200px;
       }
-      &[src="/img/smartwatch.svg"] {
+      &[src="img/smartwatch.svg"] {
         height: 50px;
       }
     }

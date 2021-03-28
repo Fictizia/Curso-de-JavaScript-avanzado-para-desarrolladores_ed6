@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   let bgElements = document.querySelectorAll('.bg');
-  let backgrounds = ['/img/fachaleco.svg', '/img/paloselfie.svg', '/img/paella.svg', '/img/smartwatch.svg', '/img/gintonic.svg'];
+  let backgrounds = ['img/fachaleco.svg', 'img/paloselfie.svg', 'img/paella.svg', 'img/smartwatch.svg', 'img/gintonic.svg'];
   let backgroundsCount = 0;
 
   function changeBg() {
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!casilla.classList.contains('checked') && (banderas < bombas)) {
       if (!casilla.classList.contains('bandera')) {
         casilla.classList.add('bandera');
-        casilla.innerHTML = '<img src="/img/bandera.svg">';
+        casilla.innerHTML = '<img src="img/bandera.svg">';
         banderas++;
         console.log(banderas);
         
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (casilla.classList.contains('checked') || casilla.classList.contains('bandera')) return;
     if (casilla.classList.contains('bomba')) {
       gameOver();
-      face.src= "/img/chill.svg";
+      face.src= "img/chill.svg";
     }
     else {
       let total = casilla.getAttribute('data');
@@ -326,11 +326,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function contarBanderas() {
     if (banderas < 10) {
       contadorBanderas.innerHTML = "0" + banderas;
-      face.src="/img/chill.svg";
+      face.src="img/chill.svg";
     }
     if (banderas > 12 && banderas < 20) {
       contadorBanderas.innerHTML = banderas;
-      face.src="/img/nervous.svg";
+      face.src="img/nervous.svg";
     }
   }
 
@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     casillas.forEach(casilla => {
       if (casilla.classList.contains('bomba')) {
-        casilla.innerHTML = '<img src="/img/bomba.svg">';
+        casilla.innerHTML = '<img src="img/bomba.svg">';
       }
     });
   }
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
         aciertos++
       }
       if (aciertos === bombas) {
-        face.src= "/img/angry.svg";
+        face.src= "img/angry.svg";
         setTimeout(alertaFinal, 1000);
         isGameOver = true;
       }

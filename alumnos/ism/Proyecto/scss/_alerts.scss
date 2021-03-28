@@ -41,7 +41,7 @@
       justify-content: flex-start;
     }
     &.bienvenida {
-      background-image: url(/img/bertin-osborne.png);
+      background-image: url(img/bertin-osborne.png);
       background-size: 45%;
       .swal2-actions {
         button {
@@ -50,7 +50,7 @@
       }
     }
     &.ganar {
-      background-image: url(/img/javier-cardenas.png);
+      background-image: url(img/javier-cardenas.png);
       background-color: $green;
       background-size: 25%;
       .swal2-actions {
@@ -60,7 +60,7 @@
       }
     }
     &.perder {
-      background-image: url(/img/alvaro-ojeda.png);
+      background-image: url(img/alvaro-ojeda.png);
       background-color: $red;
       .swal2-actions {
         button {
@@ -69,7 +69,7 @@
       }
     }
     &.instrucciones {
-      background-image: url(/img/carlos-herrera.png);
+      background-image: url(img/carlos-herrera.png);
       background-color: $yellow;
       background-size: 45%;
       .swal2-actions {
