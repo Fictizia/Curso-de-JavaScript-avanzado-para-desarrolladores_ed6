@@ -1,0 +1,28 @@
+button,
+button.alert-button {
+  cursor: pointer;
+  border: $border-base;
+  border-radius: none;
+  background: $lightgray;
+  padding: .5rem 1rem;
+  position: relative;
+  font-size: 1rem;
+  font-family: 'NB Mono Light';
+  box-shadow: 4px -4px 0px 0px $black;
+  min-width: 145px;
+  max-height: 50px;
+  height: 50px;
+  &:active {
+    transform: translate(4px, -4px);
+    box-shadow: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  &#reload {
+    background: $blue;
+  }
+  &#help {
+    background: $yellow;
+  }
+}

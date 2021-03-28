@@ -1,0 +1,27 @@
+{
+  "name": "proyectazo",
+  "version": "1.0.0",
+  "description": "mi proyecto pa la fictizia",
+  "main": "script.js",
+  "dependencies": {
+    "gulp-concat-css": "^3.1.0",
+    "gulp-cssnano": "^2.1.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "clean-css-cli": "^5.2.1",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "isoldilla/Curso-de-JavaScript-avanzado-para-desarrolladores_ed6/alumnos/ism/Proyecto/"
+  },
+  "author": "",
+  "license": "ISC"
+}
