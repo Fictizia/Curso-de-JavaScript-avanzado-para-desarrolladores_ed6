@@ -2,8 +2,9 @@ button,
 button.alert-button {
   cursor: pointer;
   border: $border-base;
+  border-radius: none;
   background: $lightgray;
-  padding: .5rem 0;
+  padding: .5rem 1rem;
   position: relative;
   font-size: 1rem;
   font-family: 'NB Mono Light';

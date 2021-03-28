@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let timer = document.getElementById('seconds');
   let btnReset = document.getElementById('reset');
   let btnPause = document.getElementById('pause');
-  let btnBg = document.getElementById('changeBg');
   const reload = document.getElementById('reload');
   let face = document.querySelector('.face img');
 
@@ -31,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   let bgElements = document.querySelectorAll('.bg');
-  let backgrounds = ['/img/fachaleco.svg', '/img/paloselfie.svg', '/img/paella.svg', '/img/smartwatch.svg'];
+  let backgrounds = ['/img/fachaleco.svg', '/img/paloselfie.svg', '/img/paella.svg', '/img/smartwatch.svg', '/img/gintonic.svg'];
   let backgroundsCount = 0;
 
   function changeBg() {
@@ -210,8 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!casilla.classList.contains('checked') && (banderas < bombas)) {
       if (!casilla.classList.contains('bandera')) {
         casilla.classList.add('bandera');
-        casilla.innerHTML = "🇪🇸";
-        
+        casilla.innerHTML = '<img src="/img/bandera.svg">';
         banderas++;
         console.log(banderas);
         
@@ -237,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (casilla.classList.contains('checked') || casilla.classList.contains('bandera')) return;
     if (casilla.classList.contains('bomba')) {
       gameOver();
+      face.src= "/img/chill.svg";
     }
     else {
       let total = casilla.getAttribute('data');
@@ -329,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
       contadorBanderas.innerHTML = "0" + banderas;
       face.src="/img/chill.svg";
     }
-    else {
+    if (banderas > 12 && banderas < 20) {
       contadorBanderas.innerHTML = banderas;
       face.src="/img/nervous.svg";
     }
@@ -351,20 +350,25 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('BOOM!');
     isGameOver = true;
     console.log("Game over");
-    Swal.fire({
-      title: "has perdido",
-      text: "ahora hazme la comida por favor",     
-      confirmButtonText: "comprendido",
-      customClass: {
-        popup: 'alert-container instrucciones',
-      }
-    }).then(function(){
+    setTimeout(() => {
+      Swal.fire({
+        title: "geim ouver",
+        html: "<p>Y azín va Ehpaña... Llena de ROJOS y LESBIANAS. Zi tuviera do COJONES jugaría otra ve.</p><p>A mamarla, figura!</p>",  
+        confirmButtonText: "soy Copérnico",
+        buttonsStyling: false,
+        customClass: {
+          popup: 'alert-container perder',
+          confirmButton: 'alert-button'
+        }
+      }).then(function(){
       location.reload();
-  });
+      });
+    }, 1000);
+    
 
     casillas.forEach(casilla => {
       if (casilla.classList.contains('bomba')) {
-        casilla.innerHTML = "💣"
+        casilla.innerHTML = '<img src="/img/bomba.svg">';
       }
     });
   }
@@ -376,6 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
         aciertos++
       }
       if (aciertos === bombas) {
+        face.src= "/img/angry.svg";
         setTimeout(alertaFinal, 1000);
         isGameOver = true;
       }
@@ -383,16 +388,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function alertaFinal() {
-    face.src="/img/angry.svg";
-    var alertasRancias = ["Eso te lo hago yo en la mitad", "Nada mal pa ser tía xdd", "ni machismo ni feminismo, igualdad"];
-    var a = Math.floor(Math.random() * alertasRancias.length);
-    // window.alert(alertasRancias[a]);
     Swal.fire({
-      title: "Instrucciones",
-      text: alertasRancias[a],      
-      confirmButtonText: "comprendido",
+      title: "Enhorabuena máquina",
+      html: "<p>No está mal, pero si me dejas que te enseñe la técnica buena te lo haces en 10 segundos.</p><p>Qué le vamos a hacer, soy español, ¿a qué quieres que te gane? ¡JAJAJA!</p>",    
+      confirmButtonText: "Venga pirámide",
+      buttonsStyling: false,
       customClass: {
-        popup: 'alert-container instrucciones',
+        popup: 'alert-container ganar',
+        confirmButton: 'alert-button'
       }
     }).then(function(){
       location.reload();

@@ -47,6 +47,7 @@
       font-family: $font-family-bold;
       -webkit-text-stroke: 1px $black;
       box-shadow: 0 0 0 .03rem $black inset;
+      background: $white;
       &[data="1"] {
         color: $red;
       }
@@ -66,12 +67,9 @@
         color: $lightgray;
       }
   
-      &.bomba {
-        background: fuchsia;
-      }
-      &.vacio {
-        background: $white;
-      }
+      // &.bomba {
+      //   background: fuchsia;
+      // }
       &.checked {
         background: $darkgray;
       }
