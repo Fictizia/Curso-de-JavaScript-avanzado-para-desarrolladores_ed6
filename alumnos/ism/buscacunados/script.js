@@ -9,9 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let casillas = [];
   let bombas = 20;
   let banderas = 0;
-
   let isGameOver = false;
-  //create board
 
   let seconds = 0;
   let timer = document.getElementById('seconds');
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   let bgElements = document.querySelectorAll('.bg');
   let backgrounds = ['img/fachaleco.svg', 'img/paloselfie.svg', 'img/paella.svg', 'img/smartwatch.svg', 'img/gintonic.svg'];
-  let backgroundsCount = 0;
 
   function changeBg() {
     let number = backgrounds[Math.floor(Math.random() * backgrounds.length)];
@@ -76,36 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
   });
+
   //Background
   document.addEventListener('mousemove', function(e) {
     let mouseX = e.pageX;
     let mouseY = e.pageY;
-    // console.log(mouseX, mouseY);
     bgElements.forEach(element => {
-      // element.style.top = mouseY;
       let elementX = element.getBoundingClientRect().left;
       let elementY = element.getBoundingClientRect().top;
       let difX = mouseX - elementX;
       let difY = mouseY - elementY;
-
       let radians = Math.atan2(difY, difX);
       let angle = radians * 180 / Math.PI;
-
       element.style.transform = "rotate(" + angle + "deg)";
     });
   });
-
-  //Every 3 secs change fachaleco
-  // setInterval(function() {
-  //   count = count + 1;
-  //   count = count % backgrounds.length;
-
-  //   let image = backgrounds[count];
-
-  //   bgElements.forEach(element => {
-  //     element.src = image;
-  //   })
-  // }, 3000)
 
   function incrementSeconds() {
       seconds += 1;
@@ -123,17 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(counter);
       btnPause.innerHTML = 'reanudar';
     }
-    else{
+    else {
       if (counter) clearInterval(counter);
       counter = setInterval(incrementSeconds, 1000);
       btnPause.innerHTML = 'pausar';
     }
   }
   
-
-
-  // var interval = setInterval(callback, 1000);
-
   function crearTablero() {
     const bombasArray = Array(bombas).fill('bomba');
     const vacioArray = Array(area - bombas).fill('vacio');
@@ -141,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomJuego = juegoArray.sort(() => Math.random() -0.5);
     console.log(randomJuego);
     
-    // get shuffled game array with random bombs
     for(let i = 0; i < area; i++) {
       //Crear un div por casilla
       const casilla = document.createElement('div');
@@ -226,8 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   crearTablero();
 
-  
-
   function clavarBandera(casilla) {
     if (isGameOver) return;
     if (!casilla.classList.contains('checked') && (banderas < bombas)) {
@@ -236,15 +211,12 @@ document.addEventListener('DOMContentLoaded', () => {
         casilla.innerHTML = '<img src="img/bandera.svg">';
         banderas++;
         console.log(banderas);
-        
-       
         checkWin();
       } else {
         casilla.classList.remove('bandera');
         casilla.innerHTML = "";
         banderas--
         console.log(banderas);
-
       }
       contarBanderas();
     }
@@ -252,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function click(casilla) {
     let casillaID = casilla.id;
-    // console.log(casillaID);
     //Si es Game over, no pasa nada
     if (isGameOver) return;
     // Si la casilla ya ha sido checkeada o tiene una bandera, no pasa nada
@@ -274,18 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
       comprobarCasilla(casilla, casillaID);
     }
     // Para lo demás, añadir la clase checked
-    casilla.classList.add('checked');
-    
+    casilla.classList.add('checked');  
   }
 
-//  function start() {
-//   if(!empieza) {
-//     offset = Date.now();
-//     empieza = setInterval(update, 1);
-//   }
-//  }
-
-  //Check neighboring squares once square is clicked
   function comprobarCasilla(casilla, casillaID) {
     const bordeIzquierdo = (casillaID % width === 0);
     const bordeDerecho = (casillaID % width === width -1);
@@ -343,10 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 10);
   }
 
-  // function displayBandera(num) {
-  //   var contador = document.getElementById("banderas").innerHTML = cifra + num;
-  //   cifra = contador;
-  // }
   function contarBanderas() {
     if (banderas < 10) {
       contadorBanderas.innerHTML = "0" + banderas;
