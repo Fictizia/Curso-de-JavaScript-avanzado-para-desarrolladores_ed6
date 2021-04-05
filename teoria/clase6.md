@@ -334,16 +334,16 @@ Los objetos Date nos proporcionan los siguientes métodos de lectura y edición:
     nuevoAnio.setUTCFullYear(1969); // Pasamos a 1969
     console.info("La fecha es " + nuevoAnio);
 
-    nuevoAnio.setDate(56); // 1 Enero + 56 Días
+    nuevoAnio.setUTCDate(56); // 1 Enero + 56 Días
     console.info("La fecha es " + nuevoAnio);
 
-    nuevoAnio.setMilliseconds(1500); // 1500ms
+    nuevoAnio.setUTCMilliseconds(1500); // 1500ms
     console.info("La fecha es " + nuevoAnio);
 
-    nuevoAnio.setHours(36); // le sumamos 36 horas
+    nuevoAnio.setUTCHours(36); // le sumamos 36 horas
     console.info("La fecha es " + nuevoAnio);
 
-    nuevoAnio.setMonth(-6); // le quitamos 6 meses
+    nuevoAnio.setUTCMonth(-6); // le quitamos 6 meses
     console.info("La fecha es " + nuevoAnio);
   ```
 
